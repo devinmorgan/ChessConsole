@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.c
+stdio.h
+-
 ChessBoard.h
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.h
 ChessBoard.h

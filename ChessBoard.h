@@ -13,6 +13,8 @@ typedef enum{
 
 void resetChessBoard(ChessPiece pChessBoard[8][8]);
 
+void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]);
+
 
 
 #endif //CHESSCONSOLE_CHESSBOARD_H
