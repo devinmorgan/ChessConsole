@@ -11,6 +11,11 @@ typedef enum{
     PAWN_W, KNIGHT_W, BISHOP_W, ROOK_W, QUEEN_W, KING_W
 } ChessPiece;
 
+typedef struct {
+    int rowIndex;
+    int colIndex;
+} BoardPosition;
+
 void resetChessBoard(ChessPiece pChessBoard[8][8]);
 
 void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]);
