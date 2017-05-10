@@ -30,27 +30,31 @@ void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             switch(pChessBoard[i][j]) {
-                case(ROOK_B) : printf("RO\t");
+                case(PAWN_B) : printf("P\t");
                     break;
-                case(KNIGHT_B) : printf("KN\t");
+                case(ROOK_B) : printf("R\t");
                     break;
-                case(BISHOP_B) : printf("BP\t");
+                case(KNIGHT_B) : printf("N\t");
                     break;
-                case(QUEEN_B) : printf("QN\t");
+                case(BISHOP_B) : printf("B\t");
                     break;
-                case(KING_B) : printf("KG\t");
+                case(QUEEN_B) : printf("Q\t");
                     break;
-                case(EMPTY) : printf("__\t");
+                case(KING_B) : printf("K\t");
                     break;
-                case(ROOK_W) : printf("ro\t");
+                case(EMPTY) : printf("_\t");
                     break;
-                case(KNIGHT_W) : printf("kn\t");
+                case(PAWN_W) : printf("p\t");
                     break;
-                case(BISHOP_W) : printf("bp\t");
+                case(ROOK_W) : printf("r\t");
                     break;
-                case(QUEEN_W) : printf("qn\t");
+                case(KNIGHT_W) : printf("n\t");
                     break;
-                case(KING_W) : printf("kg\t");
+                case(BISHOP_W) : printf("b\t");
+                    break;
+                case(QUEEN_W) : printf("q\t");
+                    break;
+                case(KING_W) : printf("k\t");
                     break;
             }
         }
