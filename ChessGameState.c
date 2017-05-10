@@ -11,7 +11,8 @@ void createNewChessGameState(ChessGameState *gameState) {
 }
 
 void makeNextMove(ChessGameState *gameState) {
-    promptPlayerForWhichPieceToMove(gameState->isWhitesMove);
+
+    promptPlayerToSelectPiece(gameState->isWhitesMove);
 
     // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
@@ -19,13 +20,13 @@ void makeNextMove(ChessGameState *gameState) {
     BoardPosition selectedFromPosition;
     do {
         readPositionFromController(&selectedFromPosition, gameState->isWhitesMove);
-    } while (! isValidFromPosition(selectedFromPosition, gameState->isWhitesMove));
+    } while (! isValidPieceToMove(selectedFromPosition, gameState->isWhitesMove));
 
     // get the legal moves for the selected piece
     BoardPosition legalMoves[] = {{-1,-1}};
-    getLegalMovesForPieceAtPosition(selectedFromPosition, &legalMoves);
+    getLegalMovesForPiece(selectedFromPosition, &legalMoves);
 
-    promptPlayerForWhereToMovePiece(gameState->isWhitesMove);
+    promptPlayerToSelectEndLocation(gameState->isWhitesMove);
 
     // read the appropriate player's controller for where
     // to move the selected piece. Keep asking for a position
@@ -33,9 +34,16 @@ void makeNextMove(ChessGameState *gameState) {
     BoardPosition selectedToPosition;
     do {
         readPositionFromController(&selectedToPosition, gameState->isWhitesMove);
-    } while (! isLegalToPosition(selectedToPosition, legalMoves, gameState->isWhitesMove));
+    } while (! isLegalEndLocation(selectedToPosition, legalMoves, gameState->isWhitesMove));
 
-
+    // update the board with the valid move and re-draw it on
+    // the screen
     updateChessBoardWithMove(selectedFromPosition, selectedToPosition, *gameState);
+    gameState->isCheck = checkOtherPlayerForCheck(gameState);
+    drawBoard(gameState);
+
+
+
+    // now its the other players turn
     gameState->isWhitesMove = ! gameState->isWhitesMove;
 }

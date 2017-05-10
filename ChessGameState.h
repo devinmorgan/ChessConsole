@@ -11,7 +11,10 @@
 typedef struct {
     ChessPiece grid[8][8];
     bool gameOver;
+    bool isCheck;
     bool isWhitesMove;
+    BoardPosition fromLoc;
+    BoardPosition toLoc;
 } ChessGameState;
 
 void createNewChessGameState(ChessGameState *gameState);
