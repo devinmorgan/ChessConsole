@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.c
+ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.h
+ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/main.c
+stdio.h
+-
+ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.h
+

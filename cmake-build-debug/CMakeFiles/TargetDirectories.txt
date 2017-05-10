@@ -1,0 +1,3 @@
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/rebuild_cache.dir
