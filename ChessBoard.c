@@ -27,7 +27,17 @@ void resetChessBoard(ChessPiece pChessBoard[8][8]) {
 }
 
 void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
+    // print the column numbers
+    printf("  %d",1);
+    for (int i = 2; i <= 8; i++) printf("\t%d", i);
+    printf("\n");
+
     for (int i = 0; i < 8; i++) {
+
+        // print row numbers
+        printf("%d ", i+1);
+
+        // print the board layout
         for (int j = 0; j < 8; j++) {
             switch(pChessBoard[i][j]) {
                 case(PAWN_B) : printf("P\t");
