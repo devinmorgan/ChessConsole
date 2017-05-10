@@ -11,39 +11,38 @@ void createNewChessGameState(ChessGameState *gameState) {
 }
 
 void makeNextMove(ChessGameState *gameState) {
-
-    promptPlayerToSelectPiece(gameState->isWhitesMove);
+    drawGameScreen(*gameState);
+    checkIfCurrentPlayerIsInCheck(*gameState);
+    checkIfCurrentPlayerCanMove(*gameState);
 
     // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
     // player chooses a legal piece to move
     BoardPosition selectedFromPosition;
+    bool isValidPiece = false;
     do {
+        promptPlayerToSelectPiece(gameState->isWhitesMove);
         readPositionFromController(&selectedFromPosition, gameState->isWhitesMove);
-    } while (! isValidPieceToMove(selectedFromPosition, gameState->isWhitesMove));
+        isValidPiece = validBoardLocation(selectedFromPosition)
+                      && isCurrentPlayersPiece(selectedFromPosition, gameState->isWhitesMove)
+                      && pieceCanMove(selectedFromPosition);
+    } while (!isValidPiece);
 
-    // get the legal moves for the selected piece
-    BoardPosition legalMoves[] = {{-1,-1}};
-    getLegalMovesForPiece(selectedFromPosition, &legalMoves);
-
-    promptPlayerToSelectEndLocation(gameState->isWhitesMove);
+    highlightSelectedSquare(selectedFromPosition);
 
     // read the appropriate player's controller for where
-    // to move the selected piece. Keep asking for a position
-    // until the player chooses a legal position for the piece
+    // to move the selected piece. Keep asking for a
+    // position until the player chooses a legal position
     BoardPosition selectedToPosition;
+    bool isValidDestination = false;
     do {
+        promptPlayerToSelectLocation(gameState->isWhitesMove);
         readPositionFromController(&selectedToPosition, gameState->isWhitesMove);
-    } while (! isLegalEndLocation(selectedToPosition, legalMoves, gameState->isWhitesMove));
+        isValidDestination = validBoardLocation(selectedFromPosition)
+                       && pieceCanReachDestination(selectedFromPosition, selectedToPosition)
+                       && destinationIsNotOccupiedByAlly(selectedFromPosition);
+    } while (!isValidDestination);
 
-    // update the board with the valid move and re-draw it on
-    // the screen
-    updateChessBoardWithMove(selectedFromPosition, selectedToPosition, *gameState);
-    gameState->isCheck = checkOtherPlayerForCheck(gameState);
-    drawBoard(gameState);
-
-
-
-    // now its the other players turn
-    gameState->isWhitesMove = ! gameState->isWhitesMove;
+    updateBoardWithMove(selectedFromPosition, selectedToPosition);
+    gameState->isWhitesMove = !gameState->isWhitesMove;
 }

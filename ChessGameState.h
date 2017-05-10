@@ -11,7 +11,8 @@
 typedef struct {
     ChessPiece grid[8][8];
     bool gameOver;
-    bool isCheck;
+    bool inCheck;
+    bool canMove;
     bool isWhitesMove;
     BoardPosition fromLoc;
     BoardPosition toLoc;
@@ -20,5 +21,7 @@ typedef struct {
 void createNewChessGameState(ChessGameState *gameState);
 
 void makeNextMove(ChessGameState *gameState);
+
+void drawGameScreen(ChessGameState gameState);
 
 #endif //CHESSCONSOLE_CHESSGAMESTATE_H
