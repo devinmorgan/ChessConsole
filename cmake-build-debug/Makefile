@@ -149,6 +149,33 @@ ChessBoard.c.s:
 	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessBoard.c.s
 .PHONY : ChessBoard.c.s
 
+ChessGameState.obj: ChessGameState.c.obj
+
+.PHONY : ChessGameState.obj
+
+# target to build an object file
+ChessGameState.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.obj
+.PHONY : ChessGameState.c.obj
+
+ChessGameState.i: ChessGameState.c.i
+
+.PHONY : ChessGameState.i
+
+# target to preprocess a source file
+ChessGameState.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.i
+.PHONY : ChessGameState.c.i
+
+ChessGameState.s: ChessGameState.c.s
+
+.PHONY : ChessGameState.s
+
+# target to generate assembly for a file
+ChessGameState.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.s
+.PHONY : ChessGameState.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -188,6 +215,9 @@ help:
 	@echo ... ChessBoard.obj
 	@echo ... ChessBoard.i
 	@echo ... ChessBoard.s
+	@echo ... ChessGameState.obj
+	@echo ... ChessGameState.i
+	@echo ... ChessGameState.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -88,6 +88,12 @@
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.h">
 			<Option target="ChessConsole"/>
 		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameState.c">
+			<Option target="ChessConsole"/>
+		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameState.h">
+			<Option target="ChessConsole"/>
+		</Unit>
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/main.c">
 			<Option target="ChessConsole"/>
 		</Unit>

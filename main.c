@@ -1,23 +1,18 @@
 #include <stdio.h>
-#include "ChessBoard.h"
+#include <stdbool.h>
+#include "ChessGameState.h"
 
 
 
 int main() {
-    ChessPiece grid[8][8];
+    // create a new ChessGameState
+    ChessGameState gameState;
+    createNewChessGameState(&gameState);
 
-    // create a new board
-    resetChessBoard(grid);
-    prettyPrintChessBoard(grid);
-    printf("\n");
-    printf("\n");
-    printf("\n");
-
-    // mutate the new board
-    grid[0][0] = KING_B;
-    grid[0][7] = KING_B;
-    prettyPrintChessBoard(grid);
-
+    // each players will alternate taking
+    // turns until the game ends
+    while (!gameState.gameOver)
+        makeNextMove(&gameState);
 
     return 0;
 }

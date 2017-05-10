@@ -70,4 +70,7 @@ void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
         }
         printf("\n");
     }
+    printf("\n");
+    printf("\n");
+    printf("\n");
 }
