@@ -67,3 +67,75 @@ void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
     printf("\n");
     printf("\n");
 }
+
+ChessPiece* getClosestPieceLeft(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceLeft(row, --col, grid);
+}
+
+ChessPiece* getClosestPieceUpperLeft(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceUpperLeft(--row, --col, grid);
+}
+
+ChessPiece* getClosestPieceUpper(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceUpper(--row, col, grid);
+}
+
+ChessPiece* getClosestPieceUpperRight(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceUpperRight(--row, ++col, grid);
+}
+
+ChessPiece* getClosestPieceRight(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceRight(row, ++col, grid);
+}
+
+ChessPiece* getClosestPieceLowerRight(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceLowerRight(--row, ++col, grid);
+}
+
+ChessPiece* getClosestPieceLower(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceLower(++row, col, grid);
+}
+
+ChessPiece* getClosestPieceLowerLeft(int row, int col, ChessPiece grid[8][8]) {
+    if (row < 0 || 7 < row || col < 0 || 7 < col)
+        return NULL;
+    if (grid[row][col].type != EMPTY)
+        return &grid[row][col];
+    else
+        return getClosestPieceLowerLeft(--row, ++col, grid);
+}
