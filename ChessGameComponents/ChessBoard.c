@@ -3,6 +3,7 @@
 //
 
 #include <stdio.h>
+#include <ctype.h>
 #include "ChessBoard.h"
 
 #include "ChessBoard.h"
@@ -16,7 +17,7 @@ const static ChessPiece defaultGrid[8][8] = {
         {{EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}, {EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}},
         {{PAWN, WHITE}, {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},  {PAWN, WHITE}, {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE}},
         {{ROOK, WHITE}, {KNIGHT, WHITE}, {BISHOP, WHITE}, {QUEEN, WHITE}, {KING, WHITE}, {BISHOP, WHITE}, {KNIGHT, WHITE}, {ROOK, WHITE}}
-        };
+};
 
 void resetChessBoard(ChessPiece pChessBoard[8][8]) {
     for (int i = 0; i < 8; i++) {
@@ -33,40 +34,32 @@ void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
     printf("\n");
 
     for (int i = 0; i < 8; i++) {
-
         // print row numbers
         printf("%d ", i+1);
 
         // print the board layout
         for (int j = 0; j < 8; j++) {
-            switch(pChessBoard[i][j]) {
-                case(PAWN_B) : printf("P\t");
+            char letter;
+            switch(pChessBoard[i][j].type) {
+                case(PAWN) : letter = 'P';
                     break;
-                case(ROOK_B) : printf("R\t");
+                case(ROOK) : letter = 'R';
                     break;
-                case(KNIGHT_B) : printf("N\t");
+                case(KNIGHT) : letter = 'N';
                     break;
-                case(BISHOP_B) : printf("B\t");
+                case(BISHOP) : letter = 'B';
                     break;
-                case(QUEEN_B) : printf("Q\t");
+                case(QUEEN) : letter = 'Q';
                     break;
-                case(KING_B) : printf("K\t");
+                case(KING) : letter = 'K';
                     break;
-                case(EMPTY) : printf("_\t");
+                case(EMPTY) : letter = ' ';
                     break;
-                case(PAWN_W) : printf("p\t");
-                    break;
-                case(ROOK_W) : printf("r\t");
-                    break;
-                case(KNIGHT_W) : printf("n\t");
-                    break;
-                case(BISHOP_W) : printf("b\t");
-                    break;
-                case(QUEEN_W) : printf("q\t");
-                    break;
-                case(KING_W) : printf("k\t");
+                default: letter = '$';
                     break;
             }
+            if (pChessBoard[i][j].color == WHITE) letter = tolower(letter);
+            printf("%c\t",letter);
         }
         printf("\n");
     }
