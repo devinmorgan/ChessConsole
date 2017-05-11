@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "ChessGameState.h"
+#include "GameStateModule.h"
 
 
 
 int main() {
-    // create a new ChessGameState
-    ChessGameState gameState;
+    // create a new GameState
+    GameState gameState;
     createNewChessGameState(&gameState);
 
     // each players will alternate taking
