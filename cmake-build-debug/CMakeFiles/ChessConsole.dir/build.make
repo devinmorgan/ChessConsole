@@ -80,71 +80,123 @@ CMakeFiles/ChessConsole.dir/main.c.obj.provides: CMakeFiles/ChessConsole.dir/mai
 CMakeFiles/ChessConsole.dir/main.c.obj.provides.build: CMakeFiles/ChessConsole.dir/main.c.obj
 
 
-CMakeFiles/ChessConsole.dir/ChessBoard.c.obj: CMakeFiles/ChessConsole.dir/flags.make
-CMakeFiles/ChessConsole.dir/ChessBoard.c.obj: ../ChessBoard.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ChessConsole.dir/ChessBoard.c.obj"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ChessConsole.dir\ChessBoard.c.obj   -c "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessBoard.c"
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj: CMakeFiles/ChessConsole.dir/flags.make
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj: ../ChessGameComponents/ChessBoard.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ChessConsole.dir\ChessGameComponents\ChessBoard.c.obj   -c "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessGameComponents\ChessBoard.c"
 
-CMakeFiles/ChessConsole.dir/ChessBoard.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ChessConsole.dir/ChessBoard.c.i"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessBoard.c" > CMakeFiles\ChessConsole.dir\ChessBoard.c.i
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.i"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessGameComponents\ChessBoard.c" > CMakeFiles\ChessConsole.dir\ChessGameComponents\ChessBoard.c.i
 
-CMakeFiles/ChessConsole.dir/ChessBoard.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ChessConsole.dir/ChessBoard.c.s"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessBoard.c" -o CMakeFiles\ChessConsole.dir\ChessBoard.c.s
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.s"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessGameComponents\ChessBoard.c" -o CMakeFiles\ChessConsole.dir\ChessGameComponents\ChessBoard.c.s
 
-CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.requires:
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.requires:
 
-.PHONY : CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.requires
+.PHONY : CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.requires
 
-CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.provides: CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.requires
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.provides.build
-.PHONY : CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.provides
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.provides: CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.requires
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.provides.build
+.PHONY : CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.provides
 
-CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.provides.build: CMakeFiles/ChessConsole.dir/ChessBoard.c.obj
+CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.provides.build: CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj
 
 
-CMakeFiles/ChessConsole.dir/ChessGameState.c.obj: CMakeFiles/ChessConsole.dir/flags.make
-CMakeFiles/ChessConsole.dir/ChessGameState.c.obj: ../ChessGameState.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ChessConsole.dir/ChessGameState.c.obj"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ChessConsole.dir\ChessGameState.c.obj   -c "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessGameState.c"
+CMakeFiles/ChessConsole.dir/GameStateModule.c.obj: CMakeFiles/ChessConsole.dir/flags.make
+CMakeFiles/ChessConsole.dir/GameStateModule.c.obj: ../GameStateModule.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ChessConsole.dir/GameStateModule.c.obj"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ChessConsole.dir\GameStateModule.c.obj   -c "C:\Users\Devin Morgan\CLionProjects\ChessConsole\GameStateModule.c"
 
-CMakeFiles/ChessConsole.dir/ChessGameState.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ChessConsole.dir/ChessGameState.c.i"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessGameState.c" > CMakeFiles\ChessConsole.dir\ChessGameState.c.i
+CMakeFiles/ChessConsole.dir/GameStateModule.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ChessConsole.dir/GameStateModule.c.i"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Devin Morgan\CLionProjects\ChessConsole\GameStateModule.c" > CMakeFiles\ChessConsole.dir\GameStateModule.c.i
 
-CMakeFiles/ChessConsole.dir/ChessGameState.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ChessConsole.dir/ChessGameState.c.s"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Devin Morgan\CLionProjects\ChessConsole\ChessGameState.c" -o CMakeFiles\ChessConsole.dir\ChessGameState.c.s
+CMakeFiles/ChessConsole.dir/GameStateModule.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ChessConsole.dir/GameStateModule.c.s"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Devin Morgan\CLionProjects\ChessConsole\GameStateModule.c" -o CMakeFiles\ChessConsole.dir\GameStateModule.c.s
 
-CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.requires:
+CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.requires:
 
-.PHONY : CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.requires
+.PHONY : CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.requires
 
-CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.provides: CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.requires
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.provides.build
-.PHONY : CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.provides
+CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.provides: CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.requires
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.provides.build
+.PHONY : CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.provides
 
-CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.provides.build: CMakeFiles/ChessConsole.dir/ChessGameState.c.obj
+CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.provides.build: CMakeFiles/ChessConsole.dir/GameStateModule.c.obj
+
+
+CMakeFiles/ChessConsole.dir/DisplayModule.c.obj: CMakeFiles/ChessConsole.dir/flags.make
+CMakeFiles/ChessConsole.dir/DisplayModule.c.obj: ../DisplayModule.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ChessConsole.dir/DisplayModule.c.obj"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ChessConsole.dir\DisplayModule.c.obj   -c "C:\Users\Devin Morgan\CLionProjects\ChessConsole\DisplayModule.c"
+
+CMakeFiles/ChessConsole.dir/DisplayModule.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ChessConsole.dir/DisplayModule.c.i"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Devin Morgan\CLionProjects\ChessConsole\DisplayModule.c" > CMakeFiles\ChessConsole.dir\DisplayModule.c.i
+
+CMakeFiles/ChessConsole.dir/DisplayModule.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ChessConsole.dir/DisplayModule.c.s"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Devin Morgan\CLionProjects\ChessConsole\DisplayModule.c" -o CMakeFiles\ChessConsole.dir\DisplayModule.c.s
+
+CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.requires:
+
+.PHONY : CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.requires
+
+CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.provides: CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.requires
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.provides.build
+.PHONY : CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.provides
+
+CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.provides.build: CMakeFiles/ChessConsole.dir/DisplayModule.c.obj
+
+
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj: CMakeFiles/ChessConsole.dir/flags.make
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj: ../SerialCommunicationModule.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ChessConsole.dir\SerialCommunicationModule.c.obj   -c "C:\Users\Devin Morgan\CLionProjects\ChessConsole\SerialCommunicationModule.c"
+
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.i"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Devin Morgan\CLionProjects\ChessConsole\SerialCommunicationModule.c" > CMakeFiles\ChessConsole.dir\SerialCommunicationModule.c.i
+
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.s"
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Devin Morgan\CLionProjects\ChessConsole\SerialCommunicationModule.c" -o CMakeFiles\ChessConsole.dir\SerialCommunicationModule.c.s
+
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.requires:
+
+.PHONY : CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.requires
+
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.provides: CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.requires
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.provides.build
+.PHONY : CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.provides
+
+CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.provides.build: CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj
 
 
 # Object files for target ChessConsole
 ChessConsole_OBJECTS = \
 "CMakeFiles/ChessConsole.dir/main.c.obj" \
-"CMakeFiles/ChessConsole.dir/ChessBoard.c.obj" \
-"CMakeFiles/ChessConsole.dir/ChessGameState.c.obj"
+"CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj" \
+"CMakeFiles/ChessConsole.dir/GameStateModule.c.obj" \
+"CMakeFiles/ChessConsole.dir/DisplayModule.c.obj" \
+"CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj"
 
 # External object files for target ChessConsole
 ChessConsole_EXTERNAL_OBJECTS =
 
 ChessConsole.exe: CMakeFiles/ChessConsole.dir/main.c.obj
-ChessConsole.exe: CMakeFiles/ChessConsole.dir/ChessBoard.c.obj
-ChessConsole.exe: CMakeFiles/ChessConsole.dir/ChessGameState.c.obj
+ChessConsole.exe: CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj
+ChessConsole.exe: CMakeFiles/ChessConsole.dir/GameStateModule.c.obj
+ChessConsole.exe: CMakeFiles/ChessConsole.dir/DisplayModule.c.obj
+ChessConsole.exe: CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj
 ChessConsole.exe: CMakeFiles/ChessConsole.dir/build.make
 ChessConsole.exe: CMakeFiles/ChessConsole.dir/linklibs.rsp
 ChessConsole.exe: CMakeFiles/ChessConsole.dir/objects1.rsp
 ChessConsole.exe: CMakeFiles/ChessConsole.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable ChessConsole.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Devin Morgan\CLionProjects\ChessConsole\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable ChessConsole.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ChessConsole.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,8 +205,10 @@ CMakeFiles/ChessConsole.dir/build: ChessConsole.exe
 .PHONY : CMakeFiles/ChessConsole.dir/build
 
 CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/main.c.obj.requires
-CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/ChessBoard.c.obj.requires
-CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/ChessGameState.c.obj.requires
+CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj.requires
+CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/GameStateModule.c.obj.requires
+CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/DisplayModule.c.obj.requires
+CMakeFiles/ChessConsole.dir/requires: CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj.requires
 
 .PHONY : CMakeFiles/ChessConsole.dir/requires
 

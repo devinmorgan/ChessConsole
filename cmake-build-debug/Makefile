@@ -122,59 +122,113 @@ ChessConsole/fast:
 	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/build
 .PHONY : ChessConsole/fast
 
-ChessBoard.obj: ChessBoard.c.obj
+ChessGameComponents/ChessBoard.obj: ChessGameComponents/ChessBoard.c.obj
 
-.PHONY : ChessBoard.obj
-
-# target to build an object file
-ChessBoard.c.obj:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessBoard.c.obj
-.PHONY : ChessBoard.c.obj
-
-ChessBoard.i: ChessBoard.c.i
-
-.PHONY : ChessBoard.i
-
-# target to preprocess a source file
-ChessBoard.c.i:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessBoard.c.i
-.PHONY : ChessBoard.c.i
-
-ChessBoard.s: ChessBoard.c.s
-
-.PHONY : ChessBoard.s
-
-# target to generate assembly for a file
-ChessBoard.c.s:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessBoard.c.s
-.PHONY : ChessBoard.c.s
-
-ChessGameState.obj: ChessGameState.c.obj
-
-.PHONY : ChessGameState.obj
+.PHONY : ChessGameComponents/ChessBoard.obj
 
 # target to build an object file
-ChessGameState.c.obj:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.obj
-.PHONY : ChessGameState.c.obj
+ChessGameComponents/ChessBoard.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj
+.PHONY : ChessGameComponents/ChessBoard.c.obj
 
-ChessGameState.i: ChessGameState.c.i
+ChessGameComponents/ChessBoard.i: ChessGameComponents/ChessBoard.c.i
 
-.PHONY : ChessGameState.i
+.PHONY : ChessGameComponents/ChessBoard.i
 
 # target to preprocess a source file
-ChessGameState.c.i:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.i
-.PHONY : ChessGameState.c.i
+ChessGameComponents/ChessBoard.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.i
+.PHONY : ChessGameComponents/ChessBoard.c.i
 
-ChessGameState.s: ChessGameState.c.s
+ChessGameComponents/ChessBoard.s: ChessGameComponents/ChessBoard.c.s
 
-.PHONY : ChessGameState.s
+.PHONY : ChessGameComponents/ChessBoard.s
 
 # target to generate assembly for a file
-ChessGameState.c.s:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameState.c.s
-.PHONY : ChessGameState.c.s
+ChessGameComponents/ChessBoard.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.s
+.PHONY : ChessGameComponents/ChessBoard.c.s
+
+DisplayModule.obj: DisplayModule.c.obj
+
+.PHONY : DisplayModule.obj
+
+# target to build an object file
+DisplayModule.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/DisplayModule.c.obj
+.PHONY : DisplayModule.c.obj
+
+DisplayModule.i: DisplayModule.c.i
+
+.PHONY : DisplayModule.i
+
+# target to preprocess a source file
+DisplayModule.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/DisplayModule.c.i
+.PHONY : DisplayModule.c.i
+
+DisplayModule.s: DisplayModule.c.s
+
+.PHONY : DisplayModule.s
+
+# target to generate assembly for a file
+DisplayModule.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/DisplayModule.c.s
+.PHONY : DisplayModule.c.s
+
+GameStateModule.obj: GameStateModule.c.obj
+
+.PHONY : GameStateModule.obj
+
+# target to build an object file
+GameStateModule.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModule.c.obj
+.PHONY : GameStateModule.c.obj
+
+GameStateModule.i: GameStateModule.c.i
+
+.PHONY : GameStateModule.i
+
+# target to preprocess a source file
+GameStateModule.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModule.c.i
+.PHONY : GameStateModule.c.i
+
+GameStateModule.s: GameStateModule.c.s
+
+.PHONY : GameStateModule.s
+
+# target to generate assembly for a file
+GameStateModule.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModule.c.s
+.PHONY : GameStateModule.c.s
+
+SerialCommunicationModule.obj: SerialCommunicationModule.c.obj
+
+.PHONY : SerialCommunicationModule.obj
+
+# target to build an object file
+SerialCommunicationModule.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj
+.PHONY : SerialCommunicationModule.c.obj
+
+SerialCommunicationModule.i: SerialCommunicationModule.c.i
+
+.PHONY : SerialCommunicationModule.i
+
+# target to preprocess a source file
+SerialCommunicationModule.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.i
+.PHONY : SerialCommunicationModule.c.i
+
+SerialCommunicationModule.s: SerialCommunicationModule.c.s
+
+.PHONY : SerialCommunicationModule.s
+
+# target to generate assembly for a file
+SerialCommunicationModule.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.s
+.PHONY : SerialCommunicationModule.c.s
 
 main.obj: main.c.obj
 
@@ -212,12 +266,18 @@ help:
 	@echo ... ChessConsole
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... ChessBoard.obj
-	@echo ... ChessBoard.i
-	@echo ... ChessBoard.s
-	@echo ... ChessGameState.obj
-	@echo ... ChessGameState.i
-	@echo ... ChessGameState.s
+	@echo ... ChessGameComponents/ChessBoard.obj
+	@echo ... ChessGameComponents/ChessBoard.i
+	@echo ... ChessGameComponents/ChessBoard.s
+	@echo ... DisplayModule.obj
+	@echo ... DisplayModule.i
+	@echo ... DisplayModule.s
+	@echo ... GameStateModule.obj
+	@echo ... GameStateModule.i
+	@echo ... GameStateModule.s
+	@echo ... SerialCommunicationModule.obj
+	@echo ... SerialCommunicationModule.i
+	@echo ... SerialCommunicationModule.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

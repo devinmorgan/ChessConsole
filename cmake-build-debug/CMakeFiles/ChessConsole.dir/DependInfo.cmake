@@ -4,8 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessBoard.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/ChessBoard.c.obj"
-  "C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameState.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/ChessGameState.c.obj"
+  "C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameComponents/ChessBoard.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj"
+  "C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/DisplayModule.c.obj"
+  "C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/GameStateModule.c.obj"
+  "C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj"
   "C:/Users/Devin Morgan/CLionProjects/ChessConsole/main.c" "C:/Users/Devin Morgan/CLionProjects/ChessConsole/cmake-build-debug/CMakeFiles/ChessConsole.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
