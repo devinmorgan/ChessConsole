@@ -6,7 +6,7 @@
 #define CHESSCONSOLE_CHESSBOARD_H
 
 typedef enum {
-    BLACK, WHITE
+    BLACK, WHITE, BLANK
 } Color;
 
 typedef enum {
