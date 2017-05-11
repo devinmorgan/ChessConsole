@@ -5,10 +5,17 @@
 #ifndef CHESSCONSOLE_CHESSBOARD_H
 #define CHESSCONSOLE_CHESSBOARD_H
 
-typedef enum{
-    PAWN_B, KNIGHT_B, BISHOP_B, ROOK_B, QUEEN_B, KING_B,
-    EMPTY,
-    PAWN_W, KNIGHT_W, BISHOP_W, ROOK_W, QUEEN_W, KING_W
+typedef enum {
+    BLACK, WHITE
+} Color;
+
+typedef enum {
+    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, EMPTY
+} PieceType;
+
+typedef struct{
+    PieceType type;
+    Color color;
 } ChessPiece;
 
 typedef struct {
