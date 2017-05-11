@@ -27,6 +27,22 @@ void resetChessBoard(ChessPiece pChessBoard[8][8]);
 
 void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]);
 
+ChessPiece getClosestPieceLeft(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceUpperLeft(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceAbove(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceUpperRight(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceRight(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceLowerRight(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceLower(int row, int col, ChessPiece grid[8][8]);
+
+ChessPiece getClosestPieceLowerLeft(int row, int col, ChessPiece grid[8][8]);
+
 
 
 #endif //CHESSCONSOLE_CHESSBOARD_H
