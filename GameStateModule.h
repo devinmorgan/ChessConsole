@@ -16,7 +16,7 @@ typedef struct {
 
 typedef struct {
     ChessPiece grid[8][8];
-    bool isWhitesMove;
+    Color teamColor;
     bool canMove;
     bool inCheck;
     bool gameOver;

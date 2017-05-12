@@ -11,17 +11,18 @@
 
 // ------------------Private Functions---------------------------
 
-bool checkIfCurrentPlayerIsInCheck(GameState* pGameState) {
-    Color teamColor = pGameState->isWhitesMove ? WHITE : BLACK;
-    bool foundCheck = false;
+bool validBoardLocation(BoardPosition position) {
+    // TODO: implement me!
+}
 
+bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     // Find the row and col of the current player's king
     int kingRow = -1, kingCol = -1;
     bool foundKing = false;
     for (int i = 0; i < 8 && !foundKing; i++) {
         for (int j = 0; j < 8; j++) {
-            ChessPiece piece = pGameState->grid[i][j];
-            if (piece.type == KING && piece.color == teamColor) {
+            ChessPiece piece = gameState.grid[i][j];
+            if (piece.type == KING && piece.color == gameState.teamColor) {
                 kingRow = i; kingCol = j;
                 foundKing = true;
                 break;
@@ -30,103 +31,191 @@ bool checkIfCurrentPlayerIsInCheck(GameState* pGameState) {
     }
 
     // look for checks caused by rooks, bishops, and queen
-    ChessPiece* left = getClosestPieceLeft(kingRow, kingCol, pGameState->grid);
+    ChessPiece* left = getClosestPieceLeft(kingRow, kingCol, gameState.grid);
     if (left != NULL
-        && left->color != teamColor
+        && left->color != gameState.teamColor
         && (left->type == ROOK || left->type == QUEEN))
         return true;
 
-    ChessPiece* upperLeft = getClosestPieceUpperLeft(kingRow, kingCol, pGameState->grid);
+    ChessPiece* upperLeft = getClosestPieceUpperLeft(kingRow, kingCol, gameState.grid);
     if (upperLeft != NULL
-        && upperLeft->color != teamColor
+        && upperLeft->color != gameState.teamColor
         && (upperLeft->type == BISHOP || upperLeft->type == QUEEN))
         return true;
 
-    ChessPiece* upper = getClosestPieceUpper(kingRow, kingCol, pGameState->grid);
+    ChessPiece* upper = getClosestPieceUpper(kingRow, kingCol, gameState.grid);
     if (upper != NULL
-        && upper->color != teamColor
+        && upper->color != gameState.teamColor
         && (upper->type == ROOK || upper->type == QUEEN))
         return true;
 
-    ChessPiece* upperRight = getClosestPieceUpperRight(kingRow, kingCol, pGameState->grid);
+    ChessPiece* upperRight = getClosestPieceUpperRight(kingRow, kingCol, gameState.grid);
     if (upperRight != NULL
-        && upperRight->color != teamColor
+        && upperRight->color != gameState.teamColor
         && (upperRight->type == BISHOP || upperRight->type == QUEEN))
         return true;
 
-    ChessPiece* right = getClosestPieceRight(kingRow, kingCol, pGameState->grid);
+    ChessPiece* right = getClosestPieceRight(kingRow, kingCol, gameState.grid);
     if (right != NULL
-        && right->color != teamColor
+        && right->color != gameState.teamColor
         && (right->type == ROOK || right->type == QUEEN))
         return true;
 
-    ChessPiece* lowerRight = getClosestPieceLowerRight(kingRow, kingCol, pGameState->grid);
+    ChessPiece* lowerRight = getClosestPieceLowerRight(kingRow, kingCol, gameState.grid);
     if (lowerRight != NULL
-        && lowerRight->color != teamColor
+        && lowerRight->color != gameState.teamColor
         && (lowerRight->type == BISHOP || lowerRight->type == QUEEN))
         return true;
 
-    ChessPiece* lower = getClosestPieceLower(kingRow, kingCol, pGameState->grid);
+    ChessPiece* lower = getClosestPieceLower(kingRow, kingCol, gameState.grid);
     if (lower != NULL
-        && lower->color != teamColor
+        && lower->color != gameState.teamColor
         && (lower->type == ROOK || lower->type == QUEEN))
         return true;
 
-    ChessPiece* lowerLeft = getClosestPieceLowerLeft(kingRow, kingCol, pGameState->grid);
+    ChessPiece* lowerLeft = getClosestPieceLowerLeft(kingRow, kingCol, gameState.grid);
     if (lowerLeft != NULL
-        && lowerLeft->color != teamColor
+        && lowerLeft->color != gameState.teamColor
         && (lowerLeft->type == BISHOP || lowerLeft->type == QUEEN))
         return true;
 
     // look for checks caused by knights
-    typedef struct {
-        int x;
-        int y;
-    } Coordinate;
-
-    Coordinate knightSpots[8] = {{-2,1},{-1,2},{1,2},{2,1},{2,-1},{1,-2},{-1,2},{-2,1}};
+    Coordinate knightSpots[8] = {{-2,-1},{-1,-2},{1,-2},{2,-1},{2,1},{1,2},{-1,2},{-2,1}};
     for (int i = 0; i < 8; i++) {
-        Coordinate coordinate = knightSpots[i];
-        int newCol = kingCol + coordinate.x;
-        int newRow = kingRow + coordinate.y;
+        BoardPosition position = {kingCol + knightSpots[i].x, kingRow + knightSpots[i].y};
 
-        // its a valid board position
-        if (0 < newCol && newCol < 8 && 0 < newRow && newRow < 8) {
-            ChessPiece piece = pGameState->grid[newRow][newCol];
-
-            // if its an enemy knight
-            if (piece.color != teamColor && piece.type == KNIGHT)
+        if (validBoardLocation(position)
+            && isEnemyAtPosition(position, gameState)
+            && isPieceOfType(position, KNIGHT, gameState))
                 return true;
-        }
     }
 
     // look for checks caused by pawns
-    Coordinate pawnSpots[2] = {{-1,1},{1,1}};
-    for (int i = 0; i < 8; i++) {
-        Coordinate coordinate = pawnSpots[i];
-        int newCol = kingCol + coordinate.x;
-        int newRow = kingRow + coordinate.y;
+    BoardPosition diagLeft = {kingRow-1, kingCol-1};
+    BoardPosition diagRight = {kingRow-1, kingCol+1};
 
-        // its a valid board position
-        if (0 < newCol && newCol < 8 && 0 < newRow && newRow < 8) {
-            ChessPiece piece = pGameState->grid[newRow][newCol];
-
-            // if its an enemy pawn
-            if (piece.color != teamColor && piece.type == PAWN)
-                return true;
-        }
+    // adjust the column indices if black instead of white
+    if (gameState.teamColor == BLACK) {
+        diagLeft.rowIndex += 2;
+        diagRight.rowIndex += 2;
     }
+
+    if (validBoardLocation(diagLeft)
+        && isEnemyAtPosition(diagLeft, gameState)
+        && isPieceOfType(diagRight, PAWN, gameState))
+        return true;
+
+    if (validBoardLocation(diagRight)
+        && isEnemyAtPosition(diagRight, gameState)
+        && isPieceOfType(diagRight, PAWN, gameState))
+        return true;
+
+    // didn't find a check
+    return false;
 }
 
-void checkIfCurrentPlayerCanMove(GameState* pGameState) {
+bool pawnCanMove(int row, int col, GameState gameState) {
+    BoardPosition diagLeft = {row-1, col-1};
+    BoardPosition straight = {row-1, col};
+    BoardPosition diagRight = {row-1, col+1};
+
+    // adjust the column indices if black instead of white
+    if (gameState.teamColor == BLACK) {
+        diagLeft.rowIndex += 2;
+        straight.rowIndex += 2;
+        diagRight.rowIndex += 2;
+    }
+
+    if (validBoardLocation(diagLeft)
+        && isEnemyAtPosition(diagLeft, gameState)
+        && !wouldMovePutSelfInCheck({row, col}, diagLeft, gameState))
+        return true;
+
+    if (validBoardLocation(straight)
+        && isPositionEmpty(straight, gameState)
+        && !wouldMOvePutSelfInCheck({row, col}, straight, gameState))
+        return true;
+
+    if (validBoardLocation(diagLeft)
+        && isEnemyAtPosition(diagLeft, gameState)
+        && !wouldMovePutSelfInCheck({row, col}, diagLeft, gameState))
+        return true;
+
+    // this pawn has no legal moves
+    return false;
+}
+
+bool knightCanMove(int row, int col, GameState gameState) {
     // TODO: implement me!
+}
+
+bool bishopCanMove(int row, int col, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool rookCanMove(int row, int col, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool queenCanMove(int row, int col, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool kingCanMove(int row, int col, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool checkIfCurrentPlayerCanMove(GameState gameState) {
+    Color teamColor = gameState.isWhitesMove ? WHITE : BLACK;
+
+    // iterate through each ally piece on the board to see if it
+    // can make a legal move
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            ChessPiece piece = gameState.grid[i][j];
+
+            if (piece.color == teamColor) {
+                switch(piece.type) {
+                    case(EMPTY) :
+                        continue;
+                    case(PAWN) : {
+                        if (pawnCanMove(i, j, gameState))
+                            return true;
+                    }
+                        break;
+                    case(KNIGHT) : {
+                        if (knightCanMove(i, j, gameState))
+                            return true;
+                    }
+                        break;
+                    case(BISHOP) : {
+                        if (bishopCanMove(i, j, gameState))
+                            return true;
+                    }
+                        break;
+                    case(ROOK) : {
+                        if (rookCanMove(i, j, gameState))
+                            return true;
+                    }
+                        break;
+                    case(QUEEN) : {
+                        if (queenCanMove(i, j, gameState))
+                            return true;
+                    }
+                        break;
+                    case(KING) : {
+                        if (kingCanMove(i, j, gameState))
+                            return true;
+                    }
+                        break;
+                }
+            }
+        }
+    }
+    return false;
 }
 
 void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, GameState* pGameState) {
-    // TODO: implement me!
-}
-
-bool validBoardLocation(BoardPosition* pPosition, GameState* pGameState) {
     // TODO: implement me!
 }
 
@@ -150,7 +239,7 @@ bool destinationIsNotOccupiedByAnAlly(BoardPosition* pEndPos, GameState* pGameSt
 
 void createNewChessGameState(GameState *gameState) {
     resetChessBoard(gameState->grid);
-    gameState->isWhitesMove = true;
+    gameState->teamColor = WHITE;
     gameState->canMove = true;
     gameState->inCheck = false;
     gameState->gameOver = false;
@@ -158,8 +247,8 @@ void createNewChessGameState(GameState *gameState) {
 }
 
 void makeNextMove(GameState* pGameState) {
-    checkIfCurrentPlayerIsInCheck(pGameState);
-    checkIfCurrentPlayerCanMove(pGameState);
+    checkIfCurrentPlayerIsInCheck(*pGameState);
+    checkIfCurrentPlayerCanMove(*pGameState);
 
     // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
@@ -169,9 +258,9 @@ void makeNextMove(GameState* pGameState) {
     while (!isValidPiece) {
         promptPlayerToSelectPiece(pGameState);
         readPositionFromController(pGameState, &piecePosition);
-        isValidPiece = validBoardLocation(&piecePosition, pGameState)
-                      && isAnAllyPiece(&piecePosition, pGameState)
-                      && pieceCanMove(&piecePosition, pGameState);
+        isValidPiece = validBoardLocation(piecePosition)
+                       && isAnAllyPiece(&piecePosition, pGameState)
+                       && pieceCanMove(&piecePosition, pGameState);
     }
     highlightSelectedSquare(pGameState, &piecePosition);
 
@@ -183,13 +272,13 @@ void makeNextMove(GameState* pGameState) {
     while (!isValidDestination) {
         promptPlayerToSelectDestination(pGameState);
         readPositionFromController(pGameState, &pieceDestination);
-        isValidDestination = validBoardLocation(&piecePosition, pGameState)
-                       && pieceCanReachDestination(&piecePosition, &pieceDestination, pGameState)
-                       && destinationIsNotOccupiedByAnAlly(&pieceDestination, pGameState);
+        isValidDestination = validBoardLocation(piecePosition)
+                             && pieceCanReachDestination(&piecePosition, &pieceDestination, pGameState)
+                             && destinationIsNotOccupiedByAnAlly(&pieceDestination, pGameState);
     }
 
     updateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
     drawUpdatedBoard(pGameState);
-    pGameState->isWhitesMove = !pGameState->isWhitesMove;
+    pGameState->teamColor = pGameState->teamColor == WHITE ? BLACK : WHITE;
 }
 
