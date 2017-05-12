@@ -5,6 +5,11 @@
 #ifndef CHESSCONSOLE_CHESSBOARD_H
 #define CHESSCONSOLE_CHESSBOARD_H
 
+typedef struct {
+    int x;
+    int y;
+} Coordinate;
+
 typedef enum {
     BLACK, WHITE
 } Color;
