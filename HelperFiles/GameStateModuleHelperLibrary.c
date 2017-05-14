@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include "ChessBoard.h"
 #include "../GameStateModule.h"
-#include "GameStateModuleHelperLibary.h""
+#include "GameStateModuleHelperLibrary.h""
 
 
 bool validBoardLocation(BoardPosition position) {
