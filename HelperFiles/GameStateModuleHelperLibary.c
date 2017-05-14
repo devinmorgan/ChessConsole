@@ -34,6 +34,8 @@ bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) 
 
 // does not implement en passant (yet)
 bool pawnIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+    // NOTE this is NOT symmetric for black and WHITE
+
     // for WHITE
     BoardPosition forwardLeft = {start.rowIndex-1, start.colIndex-1};
     BoardPosition forward = {start.rowIndex-1, start.colIndex};
@@ -60,9 +62,10 @@ bool pawnIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
 }
 
 bool knightIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+    // NOTE: this is symmetric for both BLACK and WHITE
     Coordinate possibleMoves[8] = {{-2,-1}, {-1,-2}, {1,-2}, {2,-1}, {2,1}, {1,2}, {-1,2}, {-2,1}};
     for (int i = 0; i < 8; i++) {
-        BoardPosition move = {possibleMoves[i].y + start.colIndex, possibleMoves[i].x + start.rowIndex};
+        BoardPosition move = {possibleMoves[i].y + start.rowIndex, possibleMoves[i].x + start.colIndex};
         if (samePosition(move, end))
             return ! isAnAllyPiece(move, gameState);
     }
@@ -70,7 +73,58 @@ bool knightIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
 }
 
 bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
-    // TODO: implement me!
+    // NOTE: this is symmetric for both BLACK and WHITE
+
+    bool forwardLeftIsNotObstructed = true;
+    bool forwardRightIsNotObstructed = true;
+    bool backwardLeftIsNotObstructed = true;
+    bool backwardRightIsNotObstructed = true;
+
+    for (int i = 1; i <= 7; i++) {
+        BoardPosition forwardLeft = {start.rowIndex -i, start.colIndex -i};
+        BoardPosition forwardRight = {start.rowIndex +i, start.colIndex -i};
+        BoardPosition backwardRight = {start.rowIndex +i, start.colIndex +i};
+        BoardPosition backwardLeft = {start.rowIndex -i, start.colIndex +i};
+
+        // search forwardLeft, forwardRight, backwardRight, and backwardLeft
+        // direction for the desired position to determine if the bishop can
+        // move there by checking if path is obstructed on the way there or
+        // if there is an ally already at the desired spot
+
+        if (forwardLeftIsNotObstructed) {
+            if (samePosition(forwardLeft, end)
+                && (isAnEnemyPiece(forwardLeft, gameState) || positionIsEmpty(forwardLeft, gameState)))
+                    return true;
+            if (! (positionIsEmpty(forwardLeft, gameState) &&  validBoardLocation(forwardLeft)))
+                forwardLeftIsNotObstructed = false;
+        }
+
+        if (forwardRightIsNotObstructed) {
+            if (samePosition(forwardRight, end)
+                && (isAnEnemyPiece(forwardRight, gameState) || positionIsEmpty(forwardRight, gameState)))
+                return true;
+            if (! (positionIsEmpty(forwardRight, gameState) &&  validBoardLocation(forwardRight)))
+                forwardRightIsNotObstructed = false;
+        }
+
+        if (backwardRightIsNotObstructed) {
+            if (samePosition(backwardRight, end)
+                && (isAnEnemyPiece(backwardRight, gameState) || positionIsEmpty(backwardRight, gameState)))
+                return true;
+            if (! (positionIsEmpty(backwardRight, gameState) &&  validBoardLocation(backwardRight)))
+                backwardRightIsNotObstructed = false;
+        }
+
+        if (backwardLeftIsNotObstructed) {
+            if (samePosition(backwardLeft, end)
+                && (isAnEnemyPiece(backwardLeft, gameState) || positionIsEmpty(backwardLeft, gameState)))
+                return true;
+            if (! (positionIsEmpty(backwardLeft, gameState) &&  validBoardLocation(backwardLeft)))
+                backwardLeftIsNotObstructed = false;
+        }
+    }
+
+    return false;
 }
 
 bool rookIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
