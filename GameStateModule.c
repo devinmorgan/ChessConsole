@@ -114,107 +114,6 @@ bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     return false;
 }
 
-bool pawnCanMove(int row, int col, GameState gameState) {
-    BoardPosition diagLeft = {row-1, col-1};
-    BoardPosition straight = {row-1, col};
-    BoardPosition diagRight = {row-1, col+1};
-
-    // adjust the column indices if black instead of white
-    if (gameState.teamColor == BLACK) {
-        diagLeft.rowIndex += 2;
-        straight.rowIndex += 2;
-        diagRight.rowIndex += 2;
-    }
-
-    if (validBoardLocation(diagLeft)
-        && isEnemyAtPosition(diagLeft, gameState)
-        && !wouldMovePutSelfInCheck({row, col}, diagLeft, gameState))
-        return true;
-
-    if (validBoardLocation(straight)
-        && isPositionEmpty(straight, gameState)
-        && !wouldMOvePutSelfInCheck({row, col}, straight, gameState))
-        return true;
-
-    if (validBoardLocation(diagLeft)
-        && isEnemyAtPosition(diagLeft, gameState)
-        && !wouldMovePutSelfInCheck({row, col}, diagLeft, gameState))
-        return true;
-
-    // this pawn has no legal moves
-    return false;
-}
-
-bool knightCanMove(int row, int col, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool bishopCanMove(int row, int col, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool rookCanMove(int row, int col, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool queenCanMove(int row, int col, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool kingCanMove(int row, int col, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool checkIfCurrentPlayerCanMove(GameState gameState) {
-    Color teamColor = gameState.isWhitesMove ? WHITE : BLACK;
-
-    // iterate through each ally piece on the board to see if it
-    // can make a legal move
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            ChessPiece piece = gameState.grid[i][j];
-
-            if (piece.color == teamColor) {
-                switch(piece.type) {
-                    case(EMPTY) :
-                        continue;
-                    case(PAWN) : {
-                        if (pawnCanMove(i, j, gameState))
-                            return true;
-                    }
-                        break;
-                    case(KNIGHT) : {
-                        if (knightCanMove(i, j, gameState))
-                            return true;
-                    }
-                        break;
-                    case(BISHOP) : {
-                        if (bishopCanMove(i, j, gameState))
-                            return true;
-                    }
-                        break;
-                    case(ROOK) : {
-                        if (rookCanMove(i, j, gameState))
-                            return true;
-                    }
-                        break;
-                    case(QUEEN) : {
-                        if (queenCanMove(i, j, gameState))
-                            return true;
-                    }
-                        break;
-                    case(KING) : {
-                        if (kingCanMove(i, j, gameState))
-                            return true;
-                    }
-                        break;
-                }
-            }
-        }
-    }
-    return false;
-}
-
 void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, GameState* pGameState) {
     // TODO: implement me!
 }
@@ -248,7 +147,6 @@ void createNewChessGameState(GameState *gameState) {
 
 void makeNextMove(GameState* pGameState) {
     checkIfCurrentPlayerIsInCheck(*pGameState);
-    checkIfCurrentPlayerCanMove(*pGameState);
 
     // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
