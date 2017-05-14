@@ -234,6 +234,7 @@ bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Ga
 }
 
 // ------------helpers for moveWouldPutSelfInCheck()----------------------
+
 bool currentPlayerIsInCheck(GameState gameState) {
     // Find the row and col of the current player's king
     int kingRow = -1, kingCol = -1;

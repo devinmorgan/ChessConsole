@@ -31,7 +31,7 @@ void makeNextMove(GameState* pGameState) {
                        && isAnAllyPiece(piecePosition, *pGameState);
     }
     highlightSelectedSquare(pGameState, &piecePosition);
-    indicateAllLegalMovesForPiece(piecePosition, pGameState);
+    indicateAllLegalMovesForPiece(piecePosition, *pGameState);
 
     // read the appropriate player's controller for where
     // to move the selected piece. Keep asking for a
@@ -44,7 +44,7 @@ void makeNextMove(GameState* pGameState) {
         isValidDestination = pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, *pGameState);
     }
 
-    permanentlyUpdateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
+    permanentlyUpdateGameStateWithMove(piecePosition, pieceDestination, pGameState);
     drawUpdatedBoard(pGameState);
 }
 

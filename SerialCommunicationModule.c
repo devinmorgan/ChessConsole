@@ -3,3 +3,7 @@
 //
 
 #include "SerialCommunicationModule.h"
+
+void readPositionFromController(GameState* pGameState, BoardPosition* pPosition) {
+    // TODO: implement me!
+}
