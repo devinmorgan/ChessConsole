@@ -17,9 +17,7 @@ bool isAnEnemyPiece(BoardPosition position, GameState gameState);
 
 bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState);
 
-bool possibleMoveForPiece(BoardPosition start, BoardPosition end, GameState gameState);
-
-bool noObstructionsInPath(BoardPosition start, BoardPosition end, GameState gameState);
+bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState);
 
 bool moveWouldNotPutKingInCheck(BoardPosition start, BoardPosition end, GameState gameState);
 
