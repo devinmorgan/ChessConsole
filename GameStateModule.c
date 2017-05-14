@@ -31,36 +31,6 @@ bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) 
     return piece.type == type;
 }
 
-bool pawnCanReachDestination(ChessPiece pawn, BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool knightCanReachDestination(ChessPiece knight, BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool bishopCanReachDestination(ChessPiece bishop, BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool rookCanReachDestination(ChessPiece rook, BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool queenCanReachDestination(ChessPiece queen, BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool kingCanReachDestination(ChessPiece king, BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool destinationIsNotOccupiedByAnAlly(BoardPosition position, GameState gameState) {
-    // TODO: implement me!
-    ChessPiece piece = gameState.grid[position.rowIndex][position.colIndex];
-    return piece.type == EMPTY || piece.type != gameState.teamColor;
-}
-
 // ------------------Worker Functions----------------------------
 
 bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
@@ -162,39 +132,23 @@ bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     return false;
 }
 
+bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState) {
+    // 1) end is a valid position on the board?
+    // 2) is the piece even capable of moving to that position, independent of the current gamestate?
+    // 3.a) for pawns, bishops, rooks, queens, kings, is the destination location occupied by an ally
+    //      or are there any pieces blocking the path to that destination?
+    // 3.b) for knights is the destination location occupied by an ally?
+    // 4) would doing this move put self in check?
+    return validBoardLocation(end)
+           && possibleMoveForPiece(start, end, gameState)
+           && noObstructionsInPath(start, end, gameState)
+           && moveWouldNotPutKingInCheck(start, end, gameState);
+}
+
+
 void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, GameState* pGameState) {
     // TODO: implement me!
 }
-
-bool pieceCanMove(BoardPosition* pPosition, GameState* pGameState) {
-    // TODO: implement me!
-}
-
-bool pieceCanLegallyReachDestination(BoardPosition start, BoardPosition end, ChessPiece **grid) {
-    // TODO: implement me!
-    // 1) make sure the position is legal first
-    // 2) for all pieces that are not a knight, make
-    // sure there are no pieces obstructing the way there
-    ChessPiece piece = gameState.grid[start.rowIndex][start.colIndex];
-    switch (piece.type) {
-        case PAWN :
-            break;
-        case KNIGHT:
-            break;
-        case BISHOP :
-            break;
-        case ROOK :
-            break;
-        case QUEEN :
-            break;
-        case KING :
-            break;
-    }
-}
-
-
-
-
 
 // -------------------Public Function------------------------------
 
@@ -222,6 +176,7 @@ void makeNextMove(GameState* pGameState) {
                        && isAnAllyPiece(piecePosition, *pGameState);
     }
     highlightSelectedSquare(pGameState, &piecePosition);
+    indicateAllLegalMovesForPiece(piecePosition, pGameState);
 
     // read the appropriate player's controller for where
     // to move the selected piece. Keep asking for a
@@ -231,8 +186,7 @@ void makeNextMove(GameState* pGameState) {
     while (!isValidDestination) {
         promptPlayerToSelectDestination(pGameState);
         readPositionFromController(pGameState, &pieceDestination);
-        isValidDestination = validBoardLocation(piecePosition)
-                             && pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, pGameState);
+        isValidDestination = pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, *pGameState);
     }
 
     updateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
