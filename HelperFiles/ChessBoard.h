@@ -7,6 +7,10 @@
 #ifndef CHESSCONSOLE_CHESSBOARD_H
 #define CHESSCONSOLE_CHESSBOARD_H
 
+// often represents the {delta cols, delta rows}
+// with positive representing to the right for cols
+// and downwards for rows. E.g. think about the game
+// from WHITE's perspective
 typedef struct {
     int x;
     int y;

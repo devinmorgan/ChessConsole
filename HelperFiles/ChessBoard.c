@@ -3,6 +3,7 @@
 //
 
 #include <stdio.h>
+#include <ctype.h>
 #include "ChessBoard.h"
 
 const static ChessPiece defaultGrid[8][8] = {
