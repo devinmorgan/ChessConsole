@@ -7,7 +7,22 @@
 
 #include <stdbool.h>
 #include "ChessBoard.h"
-#include "../GameStateModule.h"
+
+typedef struct {
+    ChessPiece piece;
+    BoardPosition start;
+    BoardPosition end;
+} PlayerMove;
+
+typedef struct {
+    ChessPiece grid[8][8];
+    Color teamColor;
+    bool canMove;
+    bool inCheck;
+    bool gameOver;
+    PlayerMove currentMove;
+    PlayerMove lastMove;
+} GameState;
 
 bool validBoardLocation(BoardPosition position);
 

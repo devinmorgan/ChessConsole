@@ -6,7 +6,6 @@
 #include "GameStateModule.h"
 #include "DisplayModule.h"
 #include "SerialCommunicationModule.h"
-#include "HelperFiles/GameStateModuleHelperLibrary.h"
 
 void createNewChessGameState(GameState *gameState) {
     resetChessBoard(gameState->grid);

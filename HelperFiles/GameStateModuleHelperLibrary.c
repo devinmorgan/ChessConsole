@@ -4,7 +4,6 @@
 
 #include <stdbool.h>
 #include "ChessBoard.h"
-#include "../GameStateModule.h"
 #include "GameStateModuleHelperLibrary.h""
 
 

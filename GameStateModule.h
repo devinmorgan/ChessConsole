@@ -4,25 +4,10 @@
 
 #include <stdbool.h>
 #include "HelperFiles/ChessBoard.h"
+#include "HelperFiles/GameStateModuleHelperLibrary.h"
 
 #ifndef CHESSCONSOLE_CHESSGAMESTATE_H
 #define CHESSCONSOLE_CHESSGAMESTATE_H
-
-typedef struct {
-    ChessPiece piece;
-    BoardPosition start;
-    BoardPosition end;
-} PlayerMove;
-
-typedef struct {
-    ChessPiece grid[8][8];
-    Color teamColor;
-    bool canMove;
-    bool inCheck;
-    bool gameOver;
-    PlayerMove currentMove;
-    PlayerMove lastMove;
-} GameState;
 
 void createNewChessGameState(GameState* pGameState);
 
