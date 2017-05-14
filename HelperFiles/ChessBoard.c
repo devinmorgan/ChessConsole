@@ -3,20 +3,17 @@
 //
 
 #include <stdio.h>
-#include <ctype.h>
-#include "ChessBoard.h"
-
 #include "ChessBoard.h"
 
 const static ChessPiece defaultGrid[8][8] = {
-        {{ROOK, BLACK}, {KNIGHT, BLACK}, {BISHOP, BLACK}, {QUEEN, BLACK}, {KING, BLACK}, {BISHOP, BLACK}, {KNIGHT, BLACK}, {ROOK, BLACK}},
-        {{PAWN, BLACK}, {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},  {PAWN, BLACK}, {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK}},
-        {{EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}, {EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}},
-        {{EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}, {EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}},
-        {{EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}, {EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}},
-        {{EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}, {EMPTY, BLACK},{EMPTY, BLACK},  {EMPTY, BLACK},  {EMPTY, BLACK}},
-        {{PAWN, WHITE}, {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},  {PAWN, WHITE}, {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE}},
-        {{ROOK, WHITE}, {KNIGHT, WHITE}, {BISHOP, WHITE}, {QUEEN, WHITE}, {KING, WHITE}, {BISHOP, WHITE}, {KNIGHT, WHITE}, {ROOK, WHITE}}
+        {{ROOK, BLACK, false}, {KNIGHT, BLACK, false}, {BISHOP, BLACK, false}, {QUEEN, BLACK, false}, {KING, BLACK, false}, {BISHOP, BLACK, false}, {KNIGHT, BLACK, false}, {ROOK, BLACK, false}},
+        {{PAWN, BLACK, false}, {PAWN, BLACK, false},   {PAWN, BLACK, false},   {PAWN, BLACK, false},  {PAWN, BLACK, false}, {PAWN, BLACK, false},   {PAWN, BLACK, false},   {PAWN, BLACK, false}},
+        {{EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}, {EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}},
+        {{EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}, {EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}},
+        {{EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}, {EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}},
+        {{EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}, {EMPTY, BLACK, false},{EMPTY, BLACK, false},  {EMPTY, BLACK, false},  {EMPTY, BLACK, false}},
+        {{PAWN, WHITE, false}, {PAWN, WHITE, false},   {PAWN, WHITE, false},   {PAWN, WHITE, false},  {PAWN, WHITE, false}, {PAWN, WHITE, false},   {PAWN, WHITE, false},   {PAWN, WHITE, false}},
+        {{ROOK, WHITE, false}, {KNIGHT, WHITE, false}, {BISHOP, WHITE, false}, {QUEEN, WHITE, false}, {KING, WHITE, false}, {BISHOP, WHITE, false}, {KNIGHT, WHITE, false}, {ROOK, WHITE, false}}
 };
 
 void resetChessBoard(ChessPiece pChessBoard[8][8]) {
@@ -138,4 +135,8 @@ ChessPiece* getClosestPieceLowerLeft(int row, int col, ChessPiece grid[8][8]) {
         return &grid[row][col];
     else
         return getClosestPieceLowerLeft(--row, ++col, grid);
+}
+
+bool samePosition(BoardPosition p1, BoardPosition p2) {
+    return p1.rowIndex == p2.rowIndex && p1.colIndex == p2.colIndex;
 }

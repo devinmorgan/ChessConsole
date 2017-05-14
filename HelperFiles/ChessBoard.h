@@ -2,6 +2,8 @@
 // Created by Devin Morgan on 5/9/2017.
 //
 
+#include <stdbool.h>
+
 #ifndef CHESSCONSOLE_CHESSBOARD_H
 #define CHESSCONSOLE_CHESSBOARD_H
 
@@ -21,6 +23,7 @@ typedef enum {
 typedef struct{
     PieceType type;
     Color color;
+    bool hasMoved;
 } ChessPiece;
 
 typedef struct {
@@ -47,6 +50,8 @@ ChessPiece* getClosestPieceLowerRight(int row, int col, ChessPiece grid[8][8]);
 ChessPiece* getClosestPieceLower(int row, int col, ChessPiece grid[8][8]);
 
 ChessPiece* getClosestPieceLowerLeft(int row, int col, ChessPiece grid[8][8]);
+
+bool samePosition(BoardPosition p1, BoardPosition p2);
 
 
 
