@@ -60,7 +60,13 @@ bool pawnIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
 }
 
 bool knightIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
-    // TODO: implement me!
+    Coordinate possibleMoves[8] = {{-2,-1}, {-1,-2}, {1,-2}, {2,-1}, {2,1}, {1,2}, {-1,2}, {-2,1}};
+    for (int i = 0; i < 8; i++) {
+        BoardPosition move = {possibleMoves[i].y + start.colIndex, possibleMoves[i].x + start.rowIndex};
+        if (samePosition(move, end))
+            return ! isAnAllyPiece(move, gameState);
+    }
+    return false;
 }
 
 bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
