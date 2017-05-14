@@ -32,7 +32,7 @@ bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) 
     return piece.type == type;
 }
 
-// does not implement en passant (yet)
+// TODO: implement en passant for pawns
 bool pawnIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
     // NOTE this is NOT symmetric for black and WHITE
 
@@ -182,8 +182,9 @@ bool rookIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
     return false;
 }
 
-bool queenIsCapableOfMovintToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
-    // TODO: implement me!
+bool queenIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+    return bishopIsCapableOfMovingToLocation(start, end, gameState)
+           || rookIsCapableOfMovingToLocation(start, end, gameState);
 }
 
 bool kingIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
@@ -215,7 +216,7 @@ bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Ga
         case ROOK:
             return rookIsCapableOfMovingToLocation(start, end, gameState);
         case QUEEN:
-            return queenIsCapableOfMovintToLocation(start, end, gameState);
+            return queenIsCapableOfMovingToLocation(start, end, gameState);
         case KING:
             return kingIsCapableOfMovingToLocation(start, end, gameState);
     }
