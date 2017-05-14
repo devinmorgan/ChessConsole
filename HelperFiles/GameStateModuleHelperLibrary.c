@@ -187,8 +187,18 @@ bool queenIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Ga
            || rookIsCapableOfMovingToLocation(start, end, gameState);
 }
 
+// TODO: implement castling for king
 bool kingIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
-    // TODO: implement me!
+    // NOTE: this is symmetric for both BLACK and WHITE
+    Coordinate possibleMoves[8] = {{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}};
+    for (int i = 0; i < 8; i++) {
+        BoardPosition move = {start.rowIndex + possibleMoves[i].y, start.colIndex + possibleMoves[i].x};
+
+        if (samePosition(move, end))
+            return isAnEnemyPiece(move, gameState) || positionIsEmpty(move, gameState);
+    }
+
+    return false;
 }
 
 // returns true if, under the perfect conditions, the piece
