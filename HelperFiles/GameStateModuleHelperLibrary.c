@@ -342,10 +342,6 @@ bool moveWouldPutSelfInCheck(BoardPosition start, BoardPosition end, GameState g
     return currentPlayerIsInCheck(gameState);
 }
 
-
-
-
-
 bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState) {
     return validBoardLocation(end)
            && pieceIsCapableOfMovingToLocation(start, end, gameState)
@@ -353,5 +349,13 @@ bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, Ga
 }
 
 void permanentlyUpdateGameStateWithMove(BoardPosition start, BoardPosition end, GameState *pGameState) {
-    // TODO: implement me!
+    // move the piece from the start position to the end position
+    ChessPiece* pPieceToMove = &(pGameState->grid[start.rowIndex][start.colIndex]);
+    pGameState->grid[end.rowIndex][end.colIndex] = *pPieceToMove;
+
+    // indicate that the piece has now moved at least once
+    pPieceToMove->hasMoved = true;
+
+    // switch the players turn by change the teamColor variable
+    pGameState->teamColor = pGameState->teamColor == WHITE ? BLACK : WHITE;
 }

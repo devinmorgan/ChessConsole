@@ -46,6 +46,5 @@ void makeNextMove(GameState* pGameState) {
 
     permanentlyUpdateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
     drawUpdatedBoard(pGameState);
-    pGameState->teamColor = pGameState->teamColor == WHITE ? BLACK : WHITE;
 }
 
