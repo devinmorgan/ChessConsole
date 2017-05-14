@@ -111,15 +111,8 @@ bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
 }
 
 bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState) {
-    // 1) end is a valid position on the board?
-    // 2) is the piece even capable of moving to that position, independent of the current gamestate?
-    // 3.a) for pawns, bishops, rooks, queens, kings, is the destination location occupied by an ally
-    //      or are there any pieces blocking the path to that destination?
-    // 3.b) for knights is the destination location occupied by an ally?
-    // 4) would doing this move put self in check?
     return validBoardLocation(end)
-           && possibleMoveForPiece(start, end, gameState)
-           && noObstructionsInPath(start, end, gameState)
+           && pieceIsCapableOfMovingToLocation(start, end, gameState)
            && moveWouldNotPutKingInCheck(start, end, gameState);
 }
 
