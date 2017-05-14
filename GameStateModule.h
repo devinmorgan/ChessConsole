@@ -3,7 +3,7 @@
 //
 
 #include <stdbool.h>
-#include "ChessGameComponents/ChessBoard.h""
+#include "HelperFiles/ChessBoard.h"
 
 #ifndef CHESSCONSOLE_CHESSGAMESTATE_H
 #define CHESSCONSOLE_CHESSGAMESTATE_H

@@ -100,6 +100,12 @@
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h">
 			<Option target="ChessConsole"/>
 		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModuleHelperLibary.c">
+			<Option target="ChessConsole"/>
+		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModuleHelperLibary.h">
+			<Option target="ChessConsole"/>
+		</Unit>
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.c">
 			<Option target="ChessConsole"/>
 		</Unit>

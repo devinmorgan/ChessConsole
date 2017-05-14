@@ -7,31 +7,9 @@
 #include "GameStateModule.h"
 #include "DisplayModule.h"
 #include "SerialCommunicationModule.h"
-#include "ChessGameComponents/ChessBoard.h"
+#include "GameStateModuleHelperLibary.h"
 
 // ------------------Private Functions---------------------------
-
-// ------------------Helper Functions----------------------------
-bool validBoardLocation(BoardPosition position) {
-    return 0 < position.rowIndex && position.rowIndex < 8
-           && 0 < position.colIndex && position.colIndex < 8;
-}
-
-bool isAnAllyPiece(BoardPosition position, GameState gameState) {
-    ChessPiece piece = gameState.grid[position.rowIndex][position.colIndex];
-    return piece.color == gameState.teamColor;
-}
-
-bool isAnEnemyPiece(BoardPosition position, GameState gameState) {
-    return !isAnAllyPiece(position, gameState);
-}
-
-bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) {
-    ChessPiece piece = gameState.grid[position.rowIndex][position.colIndex];
-    return piece.type == type;
-}
-
-// ------------------Worker Functions----------------------------
 
 bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     // Find the row and col of the current player's king
@@ -144,7 +122,6 @@ bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, Ga
            && noObstructionsInPath(start, end, gameState)
            && moveWouldNotPutKingInCheck(start, end, gameState);
 }
-
 
 void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, GameState* pGameState) {
     // TODO: implement me!

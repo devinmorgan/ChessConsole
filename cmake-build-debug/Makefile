@@ -203,6 +203,33 @@ GameStateModule.c.s:
 	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModule.c.s
 .PHONY : GameStateModule.c.s
 
+GameStateModuleHelperLibary.obj: GameStateModuleHelperLibary.c.obj
+
+.PHONY : GameStateModuleHelperLibary.obj
+
+# target to build an object file
+GameStateModuleHelperLibary.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.obj
+.PHONY : GameStateModuleHelperLibary.c.obj
+
+GameStateModuleHelperLibary.i: GameStateModuleHelperLibary.c.i
+
+.PHONY : GameStateModuleHelperLibary.i
+
+# target to preprocess a source file
+GameStateModuleHelperLibary.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.i
+.PHONY : GameStateModuleHelperLibary.c.i
+
+GameStateModuleHelperLibary.s: GameStateModuleHelperLibary.c.s
+
+.PHONY : GameStateModuleHelperLibary.s
+
+# target to generate assembly for a file
+GameStateModuleHelperLibary.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.s
+.PHONY : GameStateModuleHelperLibary.c.s
+
 SerialCommunicationModule.obj: SerialCommunicationModule.c.obj
 
 .PHONY : SerialCommunicationModule.obj
@@ -275,6 +302,9 @@ help:
 	@echo ... GameStateModule.obj
 	@echo ... GameStateModule.i
 	@echo ... GameStateModule.s
+	@echo ... GameStateModuleHelperLibary.obj
+	@echo ... GameStateModuleHelperLibary.i
+	@echo ... GameStateModuleHelperLibary.s
 	@echo ... SerialCommunicationModule.obj
 	@echo ... SerialCommunicationModule.i
 	@echo ... SerialCommunicationModule.s

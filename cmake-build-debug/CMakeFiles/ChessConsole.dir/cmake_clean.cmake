@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChessConsole.dir/GameStateModule.c.obj"
   "CMakeFiles/ChessConsole.dir/DisplayModule.c.obj"
   "CMakeFiles/ChessConsole.dir/SerialCommunicationModule.c.obj"
+  "CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.obj"
   "ChessConsole.pdb"
   "ChessConsole.exe"
   "ChessConsole.exe.manifest"
