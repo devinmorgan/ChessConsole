@@ -95,7 +95,7 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
             if (samePosition(forwardLeft, end)
                 && (isAnEnemyPiece(forwardLeft, gameState) || positionIsEmpty(forwardLeft, gameState)))
                     return true;
-            if (! (positionIsEmpty(forwardLeft, gameState) &&  validBoardLocation(forwardLeft)))
+            if (! (validBoardLocation(forwardLeft) && positionIsEmpty(forwardLeft, gameState)))
                 forwardLeftIsNotObstructed = false;
         }
 
@@ -103,7 +103,7 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
             if (samePosition(forwardRight, end)
                 && (isAnEnemyPiece(forwardRight, gameState) || positionIsEmpty(forwardRight, gameState)))
                 return true;
-            if (! (positionIsEmpty(forwardRight, gameState) &&  validBoardLocation(forwardRight)))
+            if (! (validBoardLocation(forwardRight) && positionIsEmpty(forwardRight, gameState)))
                 forwardRightIsNotObstructed = false;
         }
 
@@ -111,7 +111,7 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
             if (samePosition(backwardRight, end)
                 && (isAnEnemyPiece(backwardRight, gameState) || positionIsEmpty(backwardRight, gameState)))
                 return true;
-            if (! (positionIsEmpty(backwardRight, gameState) &&  validBoardLocation(backwardRight)))
+            if (! (validBoardLocation(backwardRight) && positionIsEmpty(backwardRight, gameState)))
                 backwardRightIsNotObstructed = false;
         }
 
@@ -119,7 +119,7 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
             if (samePosition(backwardLeft, end)
                 && (isAnEnemyPiece(backwardLeft, gameState) || positionIsEmpty(backwardLeft, gameState)))
                 return true;
-            if (! (positionIsEmpty(backwardLeft, gameState) &&  validBoardLocation(backwardLeft)))
+            if (! (validBoardLocation(backwardLeft) && positionIsEmpty(backwardLeft, gameState)))
                 backwardLeftIsNotObstructed = false;
         }
     }
@@ -128,7 +128,58 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
 }
 
 bool rookIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
-    // TODO: implement me!
+    // NOTE: this is symmetric for both BLACK and WHITE
+
+    bool leftIsNotObstructed = true;
+    bool forwardIsNotObstructed = true;
+    bool rightIsNotObstructed = true;
+    bool backwardIsNotObstructed = true;
+
+    for (int i = 1; i <= 7; i++) {
+        BoardPosition left = {start.rowIndex, start.colIndex -i};
+        BoardPosition forward = {start.rowIndex -i, start.colIndex};
+        BoardPosition right = {start.rowIndex, start.colIndex +i};
+        BoardPosition backward = {start.rowIndex +i, start.colIndex};
+
+        // search the left, forward, right, and backward directions
+        // for the desired position to determine if the rook can move
+        // there by checking if path is obstructed on the way there or
+        // if there is an ally already at the desired spot
+
+        if (leftIsNotObstructed) {
+            if (samePosition(left, end)
+                && (isAnEnemyPiece(left, gameState) || positionIsEmpty(left, gameState)))
+                return true;
+            if (! (validBoardLocation(left) && positionIsEmpty(left, gameState)))
+                leftIsNotObstructed = false;
+        }
+
+        if (forwardIsNotObstructed) {
+            if (samePosition(forward, end)
+                && (isAnEnemyPiece(forward, gameState) || positionIsEmpty(forward, gameState)))
+                return true;
+            if (! (validBoardLocation(forward) && positionIsEmpty(forward, gameState)))
+                forwardIsNotObstructed = false;
+        }
+
+        if (rightIsNotObstructed) {
+            if (samePosition(right, end)
+                && (isAnEnemyPiece(right, gameState) || positionIsEmpty(right, gameState)))
+                return true;
+            if (! (validBoardLocation(right) && positionIsEmpty(right, gameState)))
+                rightIsNotObstructed = false;
+        }
+
+        if (backwardIsNotObstructed) {
+            if (samePosition(backward, end)
+                && (isAnEnemyPiece(backward, gameState) || positionIsEmpty(backward, gameState)))
+                return true;
+            if (! (validBoardLocation(backward) && positionIsEmpty(backward, gameState)))
+                backwardIsNotObstructed = false;
+        }
+    }
+
+    return false;
 }
 
 bool queenIsCapableOfMovintToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
