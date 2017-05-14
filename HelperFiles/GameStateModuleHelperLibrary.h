@@ -34,12 +34,12 @@ bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState);
 
 bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState);
 
-bool moveWouldNotPutSelfInCheck(BoardPosition start, BoardPosition end, GameState gameState);
+bool moveWouldPutSelfInCheck(BoardPosition start, BoardPosition end, GameState gameState);
 
-bool checkIfCurrentPlayerIsInCheck(GameState gameState);
+bool currentPlayerIsInCheck(GameState gameState);
 
 bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState);
 
-void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, GameState* pGameState);
+void permanentlyUpdateGameStateWithMove(BoardPosition start, BoardPosition end, GameState *pGameState);
 
 #endif //CHESSCONSOLE_GAMESTATEMODULEHELPERLIBARY_H

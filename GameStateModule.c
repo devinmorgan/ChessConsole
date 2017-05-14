@@ -17,7 +17,7 @@ void createNewChessGameState(GameState *gameState) {
 }
 
 void makeNextMove(GameState* pGameState) {
-    checkIfCurrentPlayerIsInCheck(*pGameState);
+    currentPlayerIsInCheck(*pGameState);
 
     // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
@@ -44,7 +44,7 @@ void makeNextMove(GameState* pGameState) {
         isValidDestination = pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, *pGameState);
     }
 
-    updateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
+    permanentlyUpdateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
     drawUpdatedBoard(pGameState);
     pGameState->teamColor = pGameState->teamColor == WHITE ? BLACK : WHITE;
 }

@@ -3,6 +3,7 @@
 //
 
 #include <stdbool.h>
+#include <windef.h>
 #include "ChessBoard.h"
 #include "GameStateModuleHelperLibrary.h""
 
@@ -232,13 +233,8 @@ bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Ga
     }
 }
 
-// ------------helpers for moveWouldNotPutSelfInCheck()----------------------
-
-bool moveWouldNotPutSelfInCheck(BoardPosition start, BoardPosition end, GameState gameState) {
-    // TODO: implement me!
-}
-
-bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
+// ------------helpers for moveWouldPutSelfInCheck()----------------------
+bool currentPlayerIsInCheck(GameState gameState) {
     // Find the row and col of the current player's king
     int kingRow = -1, kingCol = -1;
     bool foundKing = false;
@@ -337,12 +333,25 @@ bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     return false;
 }
 
+bool moveWouldPutSelfInCheck(BoardPosition start, BoardPosition end, GameState gameState) {
+    // move the piece from the start position to the end position
+    ChessPiece pieceToMove = gameState.grid[start.rowIndex][start.colIndex];
+    gameState.grid[end.rowIndex][end.colIndex] = pieceToMove;
+
+    // return whether the current player would be in check or not
+    return currentPlayerIsInCheck(gameState);
+}
+
+
+
+
+
 bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState) {
     return validBoardLocation(end)
            && pieceIsCapableOfMovingToLocation(start, end, gameState)
-           && moveWouldNotPutSelfInCheck(start, end, gameState);
+           && !moveWouldPutSelfInCheck(start, end, gameState);
 }
 
-void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, GameState* pGameState) {
+void permanentlyUpdateGameStateWithMove(BoardPosition start, BoardPosition end, GameState *pGameState) {
     // TODO: implement me!
 }
