@@ -11,9 +11,57 @@
 
 // ------------------Private Functions---------------------------
 
+// ------------------Helper Functions----------------------------
 bool validBoardLocation(BoardPosition position) {
+    return 0 < position.rowIndex && position.rowIndex < 8
+           && 0 < position.colIndex && position.colIndex < 8;
+}
+
+bool isAnAllyPiece(BoardPosition position, GameState gameState) {
+    ChessPiece piece = gameState.grid[position.rowIndex][position.colIndex];
+    return piece.color == gameState.teamColor;
+}
+
+bool isAnEnemyPiece(BoardPosition position, GameState gameState) {
+    return !isAnAllyPiece(position, gameState);
+}
+
+bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) {
+    ChessPiece piece = gameState.grid[position.rowIndex][position.colIndex];
+    return piece.type == type;
+}
+
+bool pawnCanReachDestination(ChessPiece pawn, BoardPosition position, GameState gameState) {
     // TODO: implement me!
 }
+
+bool knightCanReachDestination(ChessPiece knight, BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool bishopCanReachDestination(ChessPiece bishop, BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool rookCanReachDestination(ChessPiece rook, BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool queenCanReachDestination(ChessPiece queen, BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool kingCanReachDestination(ChessPiece king, BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+}
+
+bool destinationIsNotOccupiedByAnAlly(BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+    ChessPiece piece = gameState.grid[position.rowIndex][position.colIndex];
+    return piece.type == EMPTY || piece.type != gameState.teamColor;
+}
+
+// ------------------Worker Functions----------------------------
 
 bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     // Find the row and col of the current player's king
@@ -85,7 +133,7 @@ bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
         BoardPosition position = {kingCol + knightSpots[i].x, kingRow + knightSpots[i].y};
 
         if (validBoardLocation(position)
-            && isEnemyAtPosition(position, gameState)
+            && isAnEnemyPiece(position, gameState)
             && isPieceOfType(position, KNIGHT, gameState))
                 return true;
     }
@@ -101,12 +149,12 @@ bool checkIfCurrentPlayerIsInCheck(GameState gameState) {
     }
 
     if (validBoardLocation(diagLeft)
-        && isEnemyAtPosition(diagLeft, gameState)
+        && isAnEnemyPiece(diagLeft, gameState)
         && isPieceOfType(diagRight, PAWN, gameState))
         return true;
 
     if (validBoardLocation(diagRight)
-        && isEnemyAtPosition(diagRight, gameState)
+        && isAnEnemyPiece(diagRight, gameState)
         && isPieceOfType(diagRight, PAWN, gameState))
         return true;
 
@@ -118,21 +166,35 @@ void updateGameStateWithMove(BoardPosition* pStartPos, BoardPosition* pEndLoc, G
     // TODO: implement me!
 }
 
-bool isAnAllyPiece(BoardPosition* pPosition, GameState* pGameState) {
-    // TODO: implement me!
-}
-
 bool pieceCanMove(BoardPosition* pPosition, GameState* pGameState) {
     // TODO: implement me!
 }
 
-bool pieceCanReachDestination(BoardPosition* pStartPos, BoardPosition* pEndPos, GameState* pGameState) {
+bool pieceCanLegallyReachDestination(BoardPosition start, BoardPosition end, ChessPiece **grid) {
     // TODO: implement me!
+    // 1) make sure the position is legal first
+    // 2) for all pieces that are not a knight, make
+    // sure there are no pieces obstructing the way there
+    ChessPiece piece = gameState.grid[start.rowIndex][start.colIndex];
+    switch (piece.type) {
+        case PAWN :
+            break;
+        case KNIGHT:
+            break;
+        case BISHOP :
+            break;
+        case ROOK :
+            break;
+        case QUEEN :
+            break;
+        case KING :
+            break;
+    }
 }
 
-bool destinationIsNotOccupiedByAnAlly(BoardPosition* pEndPos, GameState* pGameState) {
-    // TODO: implement me!
-}
+
+
+
 
 // -------------------Public Function------------------------------
 
@@ -157,8 +219,7 @@ void makeNextMove(GameState* pGameState) {
         promptPlayerToSelectPiece(pGameState);
         readPositionFromController(pGameState, &piecePosition);
         isValidPiece = validBoardLocation(piecePosition)
-                       && isAnAllyPiece(&piecePosition, pGameState)
-                       && pieceCanMove(&piecePosition, pGameState);
+                       && isAnAllyPiece(piecePosition, *pGameState);
     }
     highlightSelectedSquare(pGameState, &piecePosition);
 
@@ -171,8 +232,7 @@ void makeNextMove(GameState* pGameState) {
         promptPlayerToSelectDestination(pGameState);
         readPositionFromController(pGameState, &pieceDestination);
         isValidDestination = validBoardLocation(piecePosition)
-                             && pieceCanReachDestination(&piecePosition, &pieceDestination, pGameState)
-                             && destinationIsNotOccupiedByAnAlly(&pieceDestination, pGameState);
+                             && pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, pGameState);
     }
 
     updateGameStateWithMove(&piecePosition, &pieceDestination, pGameState);
