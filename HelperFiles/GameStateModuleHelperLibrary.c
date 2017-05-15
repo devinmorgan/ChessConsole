@@ -6,26 +6,25 @@
 #include <windef.h>
 #include "ChessBoard.h"
 #include "GameStateModuleHelperLibrary.h""
+#include "ChessPiece.h"
 
 
-
-
-bool isAnAllyPiece(BoardPosition position, GameState gameState) {
-    ChessPiece piece = *(gameState.grid[position.rowIndex][position.colIndex]).piece;
+bool isAnAllyPiece(Coordinate position, GameState gameState) {
+    ChessPiece piece = *(gameState.grid[position.row][position.col]).piece;
     return piece.color == gameState.teamColor;
 }
 
-bool isAnEnemyPiece(BoardPosition position, GameState gameState) {
+bool isAnEnemyPiece(Coordinate position, GameState gameState) {
     return !isAnAllyPiece(position, gameState);
 }
 
-bool positionIsEmpty(BoardPosition position, GameState gameState) {
-    ChessPiece* piece = (gameState.grid[position.rowIndex][position.colIndex]).piece;
+bool positionIsEmpty(Coordinate position, GameState gameState) {
+    ChessPiece* piece = (gameState.grid[position.row][position.col]).piece;
     return piece == NULL;
 }
 
-bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) {
-    ChessPiece piece = *(gameState.grid[position.rowIndex][position.colIndex]).piece;
+bool isPieceOfType(Coordinate position, PieceType type, GameState gameState) {
+    ChessPiece piece = *(gameState.grid[position.row][position.col]).piece;
     return piece.type == type;
 }
 
@@ -44,20 +43,20 @@ bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState) 
 // occupied by an ally and returns true if thy are not
 
 // TODO: implement en passant for pawns
-bool pawnIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+bool pawnIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE this is NOT symmetric for black and WHITE
 
     // for WHITE
-    BoardPosition forwardLeft = {start.rowIndex-1, start.colIndex-1};
-    BoardPosition forward = {start.rowIndex-1, start.colIndex};
-    BoardPosition forwardForward = {start.rowIndex-2, start.colIndex};
-    BoardPosition forwardRight = {start.rowIndex-1, start.colIndex+1};
+    Coordinate forwardLeft = {start.row-1, start.col-1};
+    Coordinate forward = {start.row-1, start.col};
+    Coordinate forwardForward = {start.row-2, start.col};
+    Coordinate forwardRight = {start.row-1, start.col+1};
 
     if (gameState.teamColor == BLACK) {
-        forwardLeft = {start.rowIndex+1, start.colIndex+1};
-        forward = {start.rowIndex+1, start.colIndex};
-        forwardForward = {start.rowIndex+2, start.colIndex};
-        forwardRight = {start.rowIndex+1, start.colIndex-1};
+        forwardLeft = {start.row+1, start.col+1};
+        forward = {start.row+1, start.col};
+        forwardForward = {start.row+2, start.col};
+        forwardRight = {start.row+1, start.col-1};
     }
 
     if (samePosition(forwardLeft, end) || samePosition(forwardRight, end))
@@ -72,18 +71,18 @@ bool pawnIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
     return false;
 }
 
-bool knightIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+bool knightIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE: this is symmetric for both BLACK and WHITE
     DeltaCoordinate possibleMoves[8] = {{-2,-1}, {-1,-2}, {1,-2}, {2,-1}, {2,1}, {1,2}, {-1,2}, {-2,1}};
     for (int i = 0; i < 8; i++) {
-        BoardPosition move = {possibleMoves[i].deltaRows + start.rowIndex, possibleMoves[i].deltaCols + start.colIndex};
+        Coordinate move = {possibleMoves[i].deltaRows + start.row, possibleMoves[i].deltaCols + start.col};
         if (samePosition(move, end))
             return ! isAnAllyPiece(move, gameState);
     }
     return false;
 }
 
-bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+bool bishopIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE: this is symmetric for both BLACK and WHITE
 
     bool forwardLeftIsNotObstructed = true;
@@ -92,10 +91,10 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
     bool backwardRightIsNotObstructed = true;
 
     for (int i = 1; i <= 7; i++) {
-        BoardPosition forwardLeft = {start.rowIndex -i, start.colIndex -i};
-        BoardPosition forwardRight = {start.rowIndex +i, start.colIndex -i};
-        BoardPosition backwardRight = {start.rowIndex +i, start.colIndex +i};
-        BoardPosition backwardLeft = {start.rowIndex -i, start.colIndex +i};
+        Coordinate forwardLeft = {start.row -i, start.col -i};
+        Coordinate forwardRight = {start.row +i, start.col -i};
+        Coordinate backwardRight = {start.row +i, start.col +i};
+        Coordinate backwardLeft = {start.row -i, start.col +i};
 
         // search forwardLeft, forwardRight, backwardRight, and backwardLeft
         // direction for the desired position to determine if the bishop can
@@ -138,7 +137,7 @@ bool bishopIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, G
     return false;
 }
 
-bool rookIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+bool rookIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE: this is symmetric for both BLACK and WHITE
 
     bool leftIsNotObstructed = true;
@@ -147,10 +146,10 @@ bool rookIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
     bool backwardIsNotObstructed = true;
 
     for (int i = 1; i <= 7; i++) {
-        BoardPosition left = {start.rowIndex, start.colIndex -i};
-        BoardPosition forward = {start.rowIndex -i, start.colIndex};
-        BoardPosition right = {start.rowIndex, start.colIndex +i};
-        BoardPosition backward = {start.rowIndex +i, start.colIndex};
+        Coordinate left = {start.row, start.col -i};
+        Coordinate forward = {start.row -i, start.col};
+        Coordinate right = {start.row, start.col +i};
+        Coordinate backward = {start.row +i, start.col};
 
         // search the left, forward, right, and backward directions
         // for the desired position to determine if the rook can move
@@ -193,17 +192,17 @@ bool rookIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
     return false;
 }
 
-bool queenIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+bool queenIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     return bishopIsCapableOfMovingToLocation(start, end, gameState)
            || rookIsCapableOfMovingToLocation(start, end, gameState);
 }
 
 // TODO: implement castling for king
-bool kingIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
+bool kingIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE: this is symmetric for both BLACK and WHITE
     DeltaCoordinate possibleMoves[8] = {{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}};
     for (int i = 0; i < 8; i++) {
-        BoardPosition move = {start.rowIndex + possibleMoves[i].deltaRows, start.colIndex + possibleMoves[i].deltaCols};
+        Coordinate move = {start.row + possibleMoves[i].deltaRows, start.col + possibleMoves[i].deltaCols};
 
         if (samePosition(move, end))
             return isAnEnemyPiece(move, gameState) || positionIsEmpty(move, gameState);
@@ -212,8 +211,8 @@ bool kingIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, Gam
     return false;
 }
 
-bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState) {
-    ChessPiece piece = *(gameState.grid[start.rowIndex][start.colIndex]).piece;
+bool pieceIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
+    ChessPiece piece = *(gameState.grid[start.row][start.col]).piece;
     switch (piece.type) {
         case PAWN:
             return pawnIsCapableOfMovingToLocation(start, end, gameState);
@@ -299,7 +298,7 @@ bool currentPlayerIsInCheck(GameState gameState) {
     // look for checks caused by knights
     DeltaCoordinate knightSpots[8] = {{-2,-1},{-1,-2},{1,-2},{2,-1},{2,1},{1,2},{-1,2},{-2,1}};
     for (int i = 0; i < 8; i++) {
-        BoardPosition position = {kingCol + knightSpots[i].deltaCols, kingRow + knightSpots[i].deltaRows};
+        Coordinate position = {kingCol + knightSpots[i].deltaCols, kingRow + knightSpots[i].deltaRows};
 
         if (validBoardLocation(position)
             && isAnEnemyPiece(position, gameState)
@@ -308,13 +307,13 @@ bool currentPlayerIsInCheck(GameState gameState) {
     }
 
     // look for checks caused by pawns
-    BoardPosition diagLeft = {kingRow-1, kingCol-1};
-    BoardPosition diagRight = {kingRow-1, kingCol+1};
+    Coordinate diagLeft = {kingRow-1, kingCol-1};
+    Coordinate diagRight = {kingRow-1, kingCol+1};
 
     // adjust the column indices if black instead of white
     if (gameState.teamColor == BLACK) {
-        diagLeft.rowIndex += 2;
-        diagRight.rowIndex += 2;
+        diagLeft.row += 2;
+        diagRight.row += 2;
     }
 
     if (validBoardLocation(diagLeft)
@@ -331,38 +330,38 @@ bool currentPlayerIsInCheck(GameState gameState) {
     return false;
 }
 
-bool moveWouldPutSelfInCheck(BoardPosition start, BoardPosition end, GameState gameState) {
-    ChessPiece* startPiece = (gameState.grid[start.rowIndex][start.colIndex]).piece;
-    ChessPiece* endPiece = (gameState.grid[end.rowIndex][end.colIndex]).piece;
+bool moveWouldPutSelfInCheck(Coordinate start, Coordinate end, GameState gameState) {
+    ChessPiece* startPiece = (gameState.grid[start.row][start.col]).piece;
+    ChessPiece* endPiece = (gameState.grid[end.row][end.col]).piece;
 
     // temporarily move the start piece to the end position
-    (gameState.grid[start.rowIndex][start.colIndex]).piece = NULL;
-    (gameState.grid[end.rowIndex][end.colIndex]).piece = startPiece;
+    (gameState.grid[start.row][start.col]).piece = NULL;
+    (gameState.grid[end.row][end.col]).piece = startPiece;
 
     // evaluate whether the move would put the player in check
     bool wouldCauseCheck = currentPlayerIsInCheck(gameState);
 
     // return the pieces to their original squares
-    (gameState.grid[start.rowIndex][start.colIndex]).piece = startPiece;
-    (gameState.grid[end.rowIndex][end.colIndex]).piece = endPiece;
+    (gameState.grid[start.row][start.col]).piece = startPiece;
+    (gameState.grid[end.row][end.col]).piece = endPiece;
 
     return wouldCauseCheck;
 }
 
-bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState) {
+bool pieceCanLegallyMoveToDestination(Coordinate start, Coordinate end, GameState gameState) {
     return validBoardLocation(end)
            && pieceIsCapableOfMovingToLocation(start, end, gameState)
            && !moveWouldPutSelfInCheck(start, end, gameState);
 }
 
-void permanentlyUpdateGameStateWithMove(BoardPosition start, BoardPosition end, GameState *pGameState) {
+void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameState *pGameState) {
     // move the piece from the start position to the end position
-    ChessPiece* startPiece = (pGameState->grid[start.rowIndex][start.colIndex]).piece;
-    ChessPiece* endPiece = (pGameState->.grid[end.rowIndex][end.colIndex]).piece;
+    ChessPiece* startPiece = (pGameState->grid[start.row][start.col]).piece;
+    ChessPiece* endPiece = (pGameState->.grid[end.row][end.col]).piece;
 
     // temporarily move the start piece to the end position
-    (pGameState->.grid[start.rowIndex][start.colIndex]).piece = NULL;
-    (pGameState->.grid[end.rowIndex][end.colIndex]).piece = startPiece;
+    (pGameState->.grid[start.row][start.col]).piece = NULL;
+    (pGameState->.grid[end.row][end.col]).piece = startPiece;
 
     // indicate that the piece has now moved at least once
     startPiece->hasMoved = true;
