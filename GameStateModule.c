@@ -8,6 +8,7 @@
 #include "DisplayModule.h"
 #include "SerialCommunicationModule.h"
 #include "HelperFiles/GameStateModuleHelperLibrary.h"
+#include "HelperFiles/ChessPiece.h"
 
 PlayMode promptUserForGamePlayMode() {
     displayGamePlayModeMessage();
@@ -49,19 +50,34 @@ GameState* initializeUntimedChessGame() {
     pGameState->gameOver = false;
 }
 
-void promptPlayerToSelectPiece(GameState pGameState) {
+Coordinate promptPlayerToSelectPiece(GameState* pGameState) {
+    displaySelectPieceMessage(*pGameState);
+    Coordinate response = readPositionFromController(*pGameState);
+
+    // always make sure to check if the user wants to quit the game
+    if (response.row == 0 && response.col == 0)
+        pGameState->gameOver = true;
+
+    return response;
+
+}
+
+Coordinate promptPlayerToSelectDestination(GameState* pGameState) {
+    displaySelectDestinationMessage(*pGameState);
+    Coordinate response = readPositionFromController(*pGameState);
+
+    // always make sure to check if the user wants to quit the game
+    if (response.row == 0 && response.col == 0)
+        pGameState->gameOver = true;
+
+    return response;
+}
+
+void highlightSelectedSquare(GameState* pGameState, Coordinate* pPosition) {
     // TODO: implement me!
 }
 
-void promptPlayerToSelectDestination(GameState* pGameState) {
-    // TODO: implement me!
-}
-
-void highlightSelectedSquare(GameState* pGameState, BoardPosition* pPosition) {
-    // TODO: implement me!
-}
-
-void indicateAllLegalMovesForPiece(BoardPosition position, GameState gameState) {
+void indicateAllLegalMovesForPiece(Coordinate position, GameState gameState) {
     // TODO: implement me!
 }
 
@@ -82,27 +98,34 @@ void makeNextMove(GameState* pGameState) {
     // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
     // player chooses a legal piece to move
-    BoardPosition piecePosition;
+    Coordinate piecePosition;
     bool isValidPiece = false;
     while (! isValidPiece) {
-        promptPlayerToSelectPiece(*pGameState);
-        readPositionFromController(pGameState, &piecePosition);
+        piecePosition = promptPlayerToSelectPiece(pGameState);
         isValidPiece = validBoardLocation(piecePosition)
                        && isAnAllyPiece(piecePosition, *pGameState);
     }
+
+    // check if the user wanted to quit the game
+    if (pGameState->gameOver)
+        return;
+
     highlightSelectedSquare(pGameState, &piecePosition);
     indicateAllLegalMovesForPiece(piecePosition, *pGameState);
 
     // read the appropriate player's controller for where
     // to move the selected piece. Keep asking for a
     // position until the player chooses a legal position
-    BoardPosition pieceDestination;
+    Coordinate pieceDestination;
     bool isValidDestination = false;
     while (! isValidDestination) {
-        promptPlayerToSelectDestination(pGameState);
-        readPositionFromController(pGameState, &pieceDestination);
+        pieceDestination = promptPlayerToSelectDestination(pGameState);
         isValidDestination = pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, *pGameState);
     }
+
+    // check if the user wanted to quit the game
+    if (pGameState->gameOver)
+        return;
 
     permanentlyUpdateGameStateWithMove(piecePosition, pieceDestination, pGameState);
     drawBoard(*pGameState);

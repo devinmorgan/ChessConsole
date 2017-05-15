@@ -8,7 +8,7 @@
 #ifndef CHESSCONSOLE_SERIALCOMMUNICATIONMODULE_H
 #define CHESSCONSOLE_SERIALCOMMUNICATIONMODULE_H
 
-void readPositionFromController(GameState* pGameState, BoardPosition* pPosition);
+Coordinate readPositionFromController(GameState gameState);
 
 int scanForGamePlayMode();
 

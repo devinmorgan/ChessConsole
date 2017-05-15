@@ -5,8 +5,10 @@
 #include <stdio.h>
 #include "SerialCommunicationModule.h"
 
-void readPositionFromController(GameState* pGameState, BoardPosition* pPosition) {
-    // TODO: implement me!
+Coordinate readPositionFromController(GameState gameState) {
+    int row, col;
+    scanf("%d%d", &row, &col);
+    return {row, col};
 }
 
 int scanForGamePlayMode() {

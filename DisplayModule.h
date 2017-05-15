@@ -11,4 +11,8 @@ void drawBoard(GameState gameState);
 
 void displayGamePlayModeMessage();
 
+void displaySelectPieceMessage(GameState gameState);
+
+void displaySelectDestinationMessage(GameState gameState);
+
 #endif //CHESSCONSOLE_DRAWSCREEN_H
