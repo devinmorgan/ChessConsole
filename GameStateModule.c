@@ -10,7 +10,16 @@
 #include "HelperFiles/GameStateModuleHelperLibrary.h"
 
 PlayMode promptUserForGamePlayMode() {
-    // TODO: implement me!
+    displayGamePlayModeMessage();
+    int response = scanForGamePlayMode();
+    switch (response) {
+        case 1:
+            return UNTIMED;
+        case 2:
+            return TIMED;
+        default:
+            return EXIT;
+    }
 }
 
 void playTimedChess() {

@@ -10,4 +10,6 @@
 
 void readPositionFromController(GameState* pGameState, BoardPosition* pPosition);
 
+int scanForGamePlayMode();
+
 #endif //CHESSCONSOLE_SERIALCOMMUNICATIONMODULE_H

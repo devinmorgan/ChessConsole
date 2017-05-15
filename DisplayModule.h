@@ -9,4 +9,6 @@
 
 void drawBoard(GameState gameState);
 
+void displayGamePlayModeMessage();
+
 #endif //CHESSCONSOLE_DRAWSCREEN_H
