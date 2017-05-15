@@ -122,33 +122,6 @@ ChessConsole/fast:
 	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/build
 .PHONY : ChessConsole/fast
 
-ChessGameComponents/ChessBoard.obj: ChessGameComponents/ChessBoard.c.obj
-
-.PHONY : ChessGameComponents/ChessBoard.obj
-
-# target to build an object file
-ChessGameComponents/ChessBoard.c.obj:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.obj
-.PHONY : ChessGameComponents/ChessBoard.c.obj
-
-ChessGameComponents/ChessBoard.i: ChessGameComponents/ChessBoard.c.i
-
-.PHONY : ChessGameComponents/ChessBoard.i
-
-# target to preprocess a source file
-ChessGameComponents/ChessBoard.c.i:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.i
-.PHONY : ChessGameComponents/ChessBoard.c.i
-
-ChessGameComponents/ChessBoard.s: ChessGameComponents/ChessBoard.c.s
-
-.PHONY : ChessGameComponents/ChessBoard.s
-
-# target to generate assembly for a file
-ChessGameComponents/ChessBoard.c.s:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/ChessGameComponents/ChessBoard.c.s
-.PHONY : ChessGameComponents/ChessBoard.c.s
-
 DisplayModule.obj: DisplayModule.c.obj
 
 .PHONY : DisplayModule.obj
@@ -203,32 +176,86 @@ GameStateModule.c.s:
 	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModule.c.s
 .PHONY : GameStateModule.c.s
 
-GameStateModuleHelperLibary.obj: GameStateModuleHelperLibary.c.obj
+HelperFiles/ChessBoard.obj: HelperFiles/ChessBoard.c.obj
 
-.PHONY : GameStateModuleHelperLibary.obj
+.PHONY : HelperFiles/ChessBoard.obj
 
 # target to build an object file
-GameStateModuleHelperLibary.c.obj:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.obj
-.PHONY : GameStateModuleHelperLibary.c.obj
+HelperFiles/ChessBoard.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/ChessBoard.c.obj
+.PHONY : HelperFiles/ChessBoard.c.obj
 
-GameStateModuleHelperLibary.i: GameStateModuleHelperLibary.c.i
+HelperFiles/ChessBoard.i: HelperFiles/ChessBoard.c.i
 
-.PHONY : GameStateModuleHelperLibary.i
+.PHONY : HelperFiles/ChessBoard.i
 
 # target to preprocess a source file
-GameStateModuleHelperLibary.c.i:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.i
-.PHONY : GameStateModuleHelperLibary.c.i
+HelperFiles/ChessBoard.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/ChessBoard.c.i
+.PHONY : HelperFiles/ChessBoard.c.i
 
-GameStateModuleHelperLibary.s: GameStateModuleHelperLibary.c.s
+HelperFiles/ChessBoard.s: HelperFiles/ChessBoard.c.s
 
-.PHONY : GameStateModuleHelperLibary.s
+.PHONY : HelperFiles/ChessBoard.s
 
 # target to generate assembly for a file
-GameStateModuleHelperLibary.c.s:
-	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/GameStateModuleHelperLibary.c.s
-.PHONY : GameStateModuleHelperLibary.c.s
+HelperFiles/ChessBoard.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/ChessBoard.c.s
+.PHONY : HelperFiles/ChessBoard.c.s
+
+HelperFiles/ChessPiece.obj: HelperFiles/ChessPiece.c.obj
+
+.PHONY : HelperFiles/ChessPiece.obj
+
+# target to build an object file
+HelperFiles/ChessPiece.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/ChessPiece.c.obj
+.PHONY : HelperFiles/ChessPiece.c.obj
+
+HelperFiles/ChessPiece.i: HelperFiles/ChessPiece.c.i
+
+.PHONY : HelperFiles/ChessPiece.i
+
+# target to preprocess a source file
+HelperFiles/ChessPiece.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/ChessPiece.c.i
+.PHONY : HelperFiles/ChessPiece.c.i
+
+HelperFiles/ChessPiece.s: HelperFiles/ChessPiece.c.s
+
+.PHONY : HelperFiles/ChessPiece.s
+
+# target to generate assembly for a file
+HelperFiles/ChessPiece.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/ChessPiece.c.s
+.PHONY : HelperFiles/ChessPiece.c.s
+
+HelperFiles/GameStateModuleHelperLibrary.obj: HelperFiles/GameStateModuleHelperLibrary.c.obj
+
+.PHONY : HelperFiles/GameStateModuleHelperLibrary.obj
+
+# target to build an object file
+HelperFiles/GameStateModuleHelperLibrary.c.obj:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/GameStateModuleHelperLibrary.c.obj
+.PHONY : HelperFiles/GameStateModuleHelperLibrary.c.obj
+
+HelperFiles/GameStateModuleHelperLibrary.i: HelperFiles/GameStateModuleHelperLibrary.c.i
+
+.PHONY : HelperFiles/GameStateModuleHelperLibrary.i
+
+# target to preprocess a source file
+HelperFiles/GameStateModuleHelperLibrary.c.i:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/GameStateModuleHelperLibrary.c.i
+.PHONY : HelperFiles/GameStateModuleHelperLibrary.c.i
+
+HelperFiles/GameStateModuleHelperLibrary.s: HelperFiles/GameStateModuleHelperLibrary.c.s
+
+.PHONY : HelperFiles/GameStateModuleHelperLibrary.s
+
+# target to generate assembly for a file
+HelperFiles/GameStateModuleHelperLibrary.c.s:
+	$(MAKE) -f CMakeFiles\ChessConsole.dir\build.make CMakeFiles/ChessConsole.dir/HelperFiles/GameStateModuleHelperLibrary.c.s
+.PHONY : HelperFiles/GameStateModuleHelperLibrary.c.s
 
 SerialCommunicationModule.obj: SerialCommunicationModule.c.obj
 
@@ -293,18 +320,21 @@ help:
 	@echo ... ChessConsole
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... ChessGameComponents/ChessBoard.obj
-	@echo ... ChessGameComponents/ChessBoard.i
-	@echo ... ChessGameComponents/ChessBoard.s
 	@echo ... DisplayModule.obj
 	@echo ... DisplayModule.i
 	@echo ... DisplayModule.s
 	@echo ... GameStateModule.obj
 	@echo ... GameStateModule.i
 	@echo ... GameStateModule.s
-	@echo ... GameStateModuleHelperLibary.obj
-	@echo ... GameStateModuleHelperLibary.i
-	@echo ... GameStateModuleHelperLibary.s
+	@echo ... HelperFiles/ChessBoard.obj
+	@echo ... HelperFiles/ChessBoard.i
+	@echo ... HelperFiles/ChessBoard.s
+	@echo ... HelperFiles/ChessPiece.obj
+	@echo ... HelperFiles/ChessPiece.i
+	@echo ... HelperFiles/ChessPiece.s
+	@echo ... HelperFiles/GameStateModuleHelperLibrary.obj
+	@echo ... HelperFiles/GameStateModuleHelperLibrary.i
+	@echo ... HelperFiles/GameStateModuleHelperLibrary.s
 	@echo ... SerialCommunicationModule.obj
 	@echo ... SerialCommunicationModule.i
 	@echo ... SerialCommunicationModule.s

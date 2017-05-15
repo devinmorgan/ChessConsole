@@ -82,12 +82,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameComponents/ChessBoard.c">
-			<Option target="ChessConsole"/>
-		</Unit>
-		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameComponents/ChessBoard.h">
-			<Option target="ChessConsole"/>
-		</Unit>
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.c">
 			<Option target="ChessConsole"/>
 		</Unit>
@@ -100,10 +94,22 @@
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h">
 			<Option target="ChessConsole"/>
 		</Unit>
-		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModuleHelperLibary.c">
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.c">
 			<Option target="ChessConsole"/>
 		</Unit>
-		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModuleHelperLibary.h">
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h">
+			<Option target="ChessConsole"/>
+		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.c">
+			<Option target="ChessConsole"/>
+		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h">
+			<Option target="ChessConsole"/>
+		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.c">
+			<Option target="ChessConsole"/>
+		</Unit>
+		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.h">
 			<Option target="ChessConsole"/>
 		</Unit>
 		<Unit filename="C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.c">
