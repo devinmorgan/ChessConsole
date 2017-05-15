@@ -3,6 +3,7 @@
 //
 
 #include <stdbool.h>
+#include "ChessPiece.h"
 
 #ifndef CHESSCONSOLE_CHESSBOARD_H
 #define CHESSCONSOLE_CHESSBOARD_H
@@ -17,26 +18,6 @@ typedef struct {
 } DeltaCoordinate;
 
 typedef struct {
-    int row;
-    int col;
-} Coordinate;
-
-typedef enum {
-    BLACK, WHITE
-} Color;
-
-typedef enum {
-    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING
-} PieceType;
-
-typedef struct{
-    PieceType type;
-    Color color;
-    bool hasMoved;
-    Coordinate boardPosition;
-} ChessPiece;
-
-typedef struct {
     int rowIndex;
     int colIndex;
     ChessPiece* piece;
@@ -48,21 +29,21 @@ void initializeChessBoard(BoardPosition pChessBoard[8][8]);
 
 void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]);
 
-ChessPiece* getClosestPieceLeft(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceLeft(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceUpperLeft(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceUpperLeft(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceUpper(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceUpper(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceUpperRight(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceUpperRight(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceRight(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceRight(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceLowerRight(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceLowerRight(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceLower(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceLower(int row, int col, BoardPosition grid[8][8]);
 
-ChessPiece* getClosestPieceLowerLeft(int row, int col, ChessPiece grid[8][8]);
+ChessPiece* getClosestPieceLowerLeft(int row, int col, BoardPosition grid[8][8]);
 
 bool samePosition(BoardPosition p1, BoardPosition p2);
 
