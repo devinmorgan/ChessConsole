@@ -40,7 +40,27 @@ GameState* initializeUntimedChessGame() {
     pGameState->gameOver = false;
 }
 
+void promptPlayerToSelectPiece(GameState pGameState) {
+    // TODO: implement me!
+}
+
+void promptPlayerToSelectDestination(GameState* pGameState) {
+    // TODO: implement me!
+}
+
+void highlightSelectedSquare(GameState* pGameState, BoardPosition* pPosition) {
+    // TODO: implement me!
+}
+
+void indicateAllLegalMovesForPiece(BoardPosition position, GameState gameState) {
+    // TODO: implement me!
+}
+
 bool playerIsInCheckMate(GameState gameState) {
+    return currentPlayerIsInCheck(gameState) && currentPlayerHasNoLegalMoves(gameState);
+}
+
+bool currentPlayerHasNoLegalMoves(GameState gameState) {
     // TODO: implement me!
 }
 
@@ -76,6 +96,6 @@ void makeNextMove(GameState* pGameState) {
     }
 
     permanentlyUpdateGameStateWithMove(piecePosition, pieceDestination, pGameState);
-    drawUpdatedBoard(*pGameState);
+    drawBoard(*pGameState);
 }
 

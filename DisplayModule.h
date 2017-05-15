@@ -7,16 +7,6 @@
 #ifndef CHESSCONSOLE_DRAWSCREEN_H
 #define CHESSCONSOLE_DRAWSCREEN_H
 
-void drawScreen(GameState* gameState);
-
-void promptPlayerToSelectPiece(GameState pGameState);
-
-void promptPlayerToSelectDestination(GameState* pGameState);
-
-void highlightSelectedSquare(GameState* pGameState, BoardPosition* pPosition);
-
-void indicateAllLegalMovesForPiece(BoardPosition position, GameState gameState);
-
-void drawUpdatedBoard(GameState gameState);
+void drawBoard(GameState gameState);
 
 #endif //CHESSCONSOLE_DRAWSCREEN_H
