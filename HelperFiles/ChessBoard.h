@@ -45,8 +45,8 @@ ChessPiece* getClosestPieceLower(int row, int col, BoardPosition grid[8][8]);
 
 ChessPiece* getClosestPieceLowerLeft(int row, int col, BoardPosition grid[8][8]);
 
-bool samePosition(BoardPosition p1, BoardPosition p2);
+bool samePosition(Coordinate p1, Coordinate p2);
 
-bool validBoardLocation(BoardPosition position);
+bool validBoardLocation(Coordinate position);
 
 #endif //CHESSCONSOLE_CHESSBOARD_H

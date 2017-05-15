@@ -4,8 +4,9 @@
 
 #include <stdio.h>
 #include "ChessBoard.h"
+#include "ChessPiece.h"
 
-bool validBoardLocation(BoardPosition position) {
+bool validBoardLocation(Coordinate position) {
     return 0 < position.rowIndex && position.rowIndex < 8
            && 0 < position.colIndex && position.colIndex < 8;
 }
@@ -151,6 +152,6 @@ ChessPiece* getClosestPieceLowerLeft(int row, int col, BoardPosition grid[8][8])
         return getClosestPieceLowerLeft(--row, ++col, grid);
 }
 
-bool samePosition(BoardPosition p1, BoardPosition p2) {
-    return p1.rowIndex == p2.rowIndex && p1.colIndex == p2.colIndex;
+bool samePosition(Coordinate p1, Coordinate p2) {
+    return p1.row == p2.row && p1.col == p2.col;
 }

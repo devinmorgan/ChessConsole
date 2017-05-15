@@ -9,12 +9,6 @@
 #include "ChessBoard.h"
 
 typedef struct {
-    ChessPiece piece;
-    BoardPosition start;
-    BoardPosition end;
-} PlayerMove;
-
-typedef struct {
     BoardPosition grid[8][8];
     Color teamColor;
     bool canMove;
@@ -22,20 +16,20 @@ typedef struct {
     bool gameOver;
 } GameState;
 
-bool isAnAllyPiece(BoardPosition position, GameState gameState);
+bool isAnAllyPiece(Coordinate position, GameState gameState);
 
-bool isAnEnemyPiece(BoardPosition position, GameState gameState);
+bool isAnEnemyPiece(Coordinate position, GameState gameState);
 
-bool isPieceOfType(BoardPosition position, PieceType type, GameState gameState);
+bool isPieceOfType(Coordinate position, PieceType type, GameState gameState);
 
-bool pieceIsCapableOfMovingToLocation(BoardPosition start, BoardPosition end, GameState gameState);
+bool pieceIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState);
 
-bool moveWouldPutSelfInCheck(BoardPosition start, BoardPosition end, GameState gameState);
+bool moveWouldPutSelfInCheck(Coordinate start, Coordinate end, GameState gameState);
 
 bool currentPlayerIsInCheck(GameState gameState);
 
-bool pieceCanLegallyMoveToDestination(BoardPosition start, BoardPosition end, GameState gameState);
+bool pieceCanLegallyMoveToDestination(Coordinate start, Coordinate end, GameState gameState);
 
-void permanentlyUpdateGameStateWithMove(BoardPosition start, BoardPosition end, GameState *pGameState);
+void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameState *pGameState);
 
 #endif //CHESSCONSOLE_GAMESTATEMODULEHELPERLIBARY_H
