@@ -9,7 +9,17 @@
 #ifndef CHESSCONSOLE_CHESSGAMESTATE_H
 #define CHESSCONSOLE_CHESSGAMESTATE_H
 
-void createNewChessGameState(GameState* pGameState);
+typedef enum {
+    TIMED, UNTIMED, EXIT
+} PlayMode;
+
+void playTimedChess();
+
+void playUntimedChess();
+
+PlayMode promptUserForGamePlayMode();
+
+GameState* initializeUntimedChessGame();
 
 void makeNextMove(GameState* pGameState);
 

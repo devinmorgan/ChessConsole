@@ -9,7 +9,7 @@
 
 void drawScreen(GameState* gameState);
 
-void promptPlayerToSelectPiece(GameState* pGameState);
+void promptPlayerToSelectPiece(GameState pGameState);
 
 void promptPlayerToSelectDestination(GameState* pGameState);
 

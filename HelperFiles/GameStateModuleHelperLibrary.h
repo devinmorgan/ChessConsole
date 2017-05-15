@@ -15,16 +15,12 @@ typedef struct {
 } PlayerMove;
 
 typedef struct {
-    ChessPiece grid[8][8];
+    BoardPosition grid[8][8];
     Color teamColor;
     bool canMove;
     bool inCheck;
     bool gameOver;
-    PlayerMove currentMove;
-    PlayerMove lastMove;
 } GameState;
-
-bool validBoardLocation(BoardPosition position);
 
 bool isAnAllyPiece(BoardPosition position, GameState gameState);
 

@@ -12,8 +12,13 @@
 // and downwards for rows. E.g. think about the game
 // from WHITE's perspective
 typedef struct {
-    int x;
-    int y;
+    int deltaCols;
+    int deltaRows;
+} DeltaCoordinate;
+
+typedef struct {
+    int row;
+    int col;
 } Coordinate;
 
 typedef enum {
@@ -21,21 +26,25 @@ typedef enum {
 } Color;
 
 typedef enum {
-    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, EMPTY
+    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING
 } PieceType;
 
 typedef struct{
     PieceType type;
     Color color;
     bool hasMoved;
+    Coordinate boardPosition;
 } ChessPiece;
 
 typedef struct {
     int rowIndex;
     int colIndex;
+    ChessPiece* piece;
+    Color color;
+    bool isHighlighted;
 } BoardPosition;
 
-void resetChessBoard(ChessPiece pChessBoard[8][8]);
+void initializeChessBoard(BoardPosition pChessBoard[8][8]);
 
 void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]);
 
@@ -57,6 +66,6 @@ ChessPiece* getClosestPieceLowerLeft(int row, int col, ChessPiece grid[8][8]);
 
 bool samePosition(BoardPosition p1, BoardPosition p2);
 
-
+bool validBoardLocation(BoardPosition position);
 
 #endif //CHESSCONSOLE_CHESSBOARD_H

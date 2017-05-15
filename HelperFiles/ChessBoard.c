@@ -3,8 +3,12 @@
 //
 
 #include <stdio.h>
-#include <ctype.h>
 #include "ChessBoard.h"
+
+bool validBoardLocation(BoardPosition position) {
+    return 0 < position.rowIndex && position.rowIndex < 8
+           && 0 < position.colIndex && position.colIndex < 8;
+}
 
 void initializeChessBoard(BoardPosition chessBoard[8][8]) {
    // BLACK pieces
@@ -72,44 +76,7 @@ void initializeChessBoard(BoardPosition chessBoard[8][8]) {
 }
 
 void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
-    // print the column numbers
-    printf("  %d",1);
-    for (int i = 2; i <= 8; i++) printf("\t%d", i);
-    printf("\n");
-
-    for (int i = 0; i < 8; i++) {
-        // print row numbers
-        printf("%d ", i+1);
-
-        // print the board layout
-        for (int j = 0; j < 8; j++) {
-            char letter;
-            switch(pChessBoard[i][j].type) {
-                case(PAWN) : letter = 'P';
-                    break;
-                case(ROOK) : letter = 'R';
-                    break;
-                case(KNIGHT) : letter = 'N';
-                    break;
-                case(BISHOP) : letter = 'B';
-                    break;
-                case(QUEEN) : letter = 'Q';
-                    break;
-                case(KING) : letter = 'K';
-                    break;
-                case(EMPTY) : letter = ' ';
-                    break;
-                default: letter = '$';
-                    break;
-            }
-            if (pChessBoard[i][j].color == WHITE) letter = tolower(letter);
-            printf("%c\t",letter);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    printf("\n");
-    printf("\n");
+   // TODO: implement me!
 }
 
 ChessPiece* getClosestPieceLeft(int row, int col, ChessPiece grid[8][8]) {
