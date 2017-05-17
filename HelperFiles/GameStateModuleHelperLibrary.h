@@ -8,6 +8,8 @@
 #include <stdbool.h>
 #include "ChessBoard.h"
 
+static int MAX_POSSIBLE_MOVES = 28;
+
 typedef struct {
     BoardPosition grid[8][8];
     Color teamColor;
@@ -31,5 +33,7 @@ bool currentPlayerIsInCheck(GameState gameState);
 bool pieceCanLegallyMoveToDestination(Coordinate start, Coordinate end, GameState gameState);
 
 void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameState *pGameState);
+
+Coordinate* getLegalMovesForPiece(Coordinate coordinate, GameState* pGameState, Coordinate legalMoves[]);
 
 #endif //CHESSCONSOLE_GAMESTATEMODULEHELPERLIBARY_H

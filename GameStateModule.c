@@ -9,6 +9,7 @@
 #include "SerialCommunicationModule.h"
 #include "HelperFiles/GameStateModuleHelperLibrary.h"
 #include "HelperFiles/ChessPiece.h"
+#include "HelperFiles/ChessBoard.h"
 
 PlayMode promptUserForGamePlayMode() {
     displayGamePlayModeMessage();
@@ -73,20 +74,49 @@ Coordinate promptPlayerToSelectDestination(GameState* pGameState) {
     return response;
 }
 
-void highlightSelectedSquare(GameState* pGameState, Coordinate* pPosition) {
-    // TODO: implement me!
+void restoreStatesOfAllBoard(GameState* pGameState) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            (pGameState->grid[i][j]).state = REGULAR;
+        }
+    }
 }
 
-void indicateAllLegalMovesForPiece(Coordinate position, GameState gameState) {
+
+void highlightPieceAndItsLegalMoves(Coordinate position, GameState* pGameState) {
+    // 1) set the state of he position that got select to SELECTED
+    pGameState->grid[position.row][position.col].state = SELECTED;
+
+    // 2) get the set of coordinates that the piece can move to
+    Coordinate* legalMoves = (Coordinate *)malloc(sizeof(Coordinate) * MAX_POSSIBLE_MOVES);
+    getLegalMovesForPiece(position, pGameState, legalMoves);
+
+    // 3) iterate through the coordinates and set their state to HIGHLIGHTED
+    for (int i = 0; true ;i++) {
+        // check to see if the move is invalid
+        if (legalMoves[i].row == -1 && legalMoves[i].col == -1)
+            continue
+
+        // check to see if we have reached the end of the array
+        if (legalMoves[i].row == -2 && legalMoves[i].col== -2)
+            break;
+
+        // mark all the spaces of legal moves as highlighted
+        Coordinate move = {legalMoves[i].row, legalMoves[i].col};
+        pGameState->grid[move.row][move.col].state = HIGHLIGHTED;
+    }
+
+    // 4) free the memory for the legalMoves array
+    free(legalMoves);
+}
+
+
+bool currentPlayerHasNoLegalMoves(GameState gameState) {
     // TODO: implement me!
 }
 
 bool playerIsInCheckMate(GameState gameState) {
     return currentPlayerIsInCheck(gameState) && currentPlayerHasNoLegalMoves(gameState);
-}
-
-bool currentPlayerHasNoLegalMoves(GameState gameState) {
-    // TODO: implement me!
 }
 
 void makeNextMove(GameState* pGameState) {
@@ -109,9 +139,8 @@ void makeNextMove(GameState* pGameState) {
     // check if the user wanted to quit the game
     if (pGameState->gameOver)
         return;
-
-    highlightSelectedSquare(pGameState, &piecePosition);
-    indicateAllLegalMovesForPiece(piecePosition, *pGameState);
+    else
+        highlightPieceAndItsLegalMoves(piecePosition, pGameState);
 
     // read the appropriate player's controller for where
     // to move the selected piece. Keep asking for a
@@ -128,6 +157,7 @@ void makeNextMove(GameState* pGameState) {
         return;
 
     permanentlyUpdateGameStateWithMove(piecePosition, pieceDestination, pGameState);
+    restoreStatesOfAllBoard(pGameState;
     drawBoard(*pGameState);
 }
 

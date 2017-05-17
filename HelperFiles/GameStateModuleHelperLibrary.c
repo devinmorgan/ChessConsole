@@ -4,6 +4,7 @@
 
 #include <stdbool.h>
 #include <windef.h>
+#include <malloc.h>
 #include "ChessBoard.h"
 #include "GameStateModuleHelperLibrary.h""
 #include "ChessPiece.h"
@@ -369,3 +370,108 @@ void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameSt
     // switch the players turn by change the teamColor variable
     pGameState->teamColor = pGameState->teamColor == WHITE ? BLACK : WHITE;
 }
+
+// -----------------helpers for getLegalMovesForPiece()-----------------
+// NOTE: {-1, -1} means ignore, {-2, -2} means end of array
+
+
+Coordinate* getLegalMovesForPawn(Coordinate c, GameState* pGameState, Coordinate legalMoves[]) {
+    // create the list of all possible moves for a pawn
+    int max_pawn_moves = 4;
+    Coordinate forwardLeft;
+    Coordinate forward;
+    Coordinate forwardForward;
+    Coordinate forwardRight;
+    if (pGameState->teamColor == WHITE) {
+        forwardLeft = {c.row-1, c.col-1};
+        forward = {c.row-1, c.col};
+        forwardForward = {c.row-2, c.col};
+        forwardRight = {c.row-1, c.col+1};
+    }
+    else {
+        forwardLeft = {c.row+1, c.col+1};
+        forward = {c.row+1, c.col};
+        forwardForward = {c.row+2, c.col};
+        forwardRight = {c.row+1, c.col-1};
+    }
+    Coordinate* moves[max_pawn_moves] = {&forwardLeft, &forward, &forwardForward, &forwardRight};
+
+    // filter based on whether the pawn is
+    // even capable of moving to that location
+    for (int i = 0; i < max_pawn_moves; i++) {
+        if (moves[i] != NULL)
+            moves[i] = pawnIsCapableOfMovingToLocation(c, *moves[i], *pGameState) ? moves[i] : NULL;
+    }
+
+    // filter based on whether the move would
+    // put self in check
+    for (int i = 0; i < max_pawn_moves; i++) {
+        if (moves[i] != NULL)
+            moves[i] = moveWouldPutSelfInCheck(c, *moves[i], *pGameState) ? NULL : moves[i];
+    }
+
+    // copy the valid moves to legalMoves[]
+    int legalMovesIndex = 0;
+    for (int i = 0; i < max_pawn_moves; i++) {
+        if (moves[i] != NULL) {
+            legalMoves[legalMovesIndex].row = moves[i]->row;
+            legalMoves[legalMovesIndex].col = moves[i]->col;
+            legalMovesIndex++;
+        }
+    }
+
+    return legalMoves;
+}
+
+Coordinate* getLegalMovesForKnight(Coordinate coordinate, GameState* pGameState) {
+    // TODO: implement me!
+}
+
+
+Coordinate* getLegalMovesForBishop(Coordinate coordinate, GameState* pGameState) {
+    // TODO: implement me!
+}
+
+
+Coordinate* getLegalMovesForRook(Coordinate coordinate, GameState* pGameState) {
+    // TODO: implement me!
+}
+
+
+Coordinate* getLegalMovesForQueen(Coordinate coordinate, GameState* pGameState) {
+    // TODO: implement me!
+}
+
+
+Coordinate* getLegalMovesForKing(Coordinate coordinate, GameState* pGameState) {
+    // TODO: implement me!
+}
+
+Coordinate* getLegalMovesForPiece(Coordinate coordinate, GameState* pGameState, Coordinate legalMoves[]) {
+    // TODO: implement me!
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

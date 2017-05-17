@@ -17,12 +17,18 @@ typedef struct {
     int deltaRows;
 } DeltaCoordinate;
 
+typedef enum {
+    HIGHLIGHTED,
+    SELECTED,
+    REGULAR
+} PositionState;
+
 typedef struct {
     int rowIndex;
     int colIndex;
     ChessPiece* piece;
     Color color;
-    bool isHighlighted;
+    PositionState state;
 } BoardPosition;
 
 void initializeChessBoard(BoardPosition pChessBoard[8][8]);

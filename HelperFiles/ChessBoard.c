@@ -7,8 +7,8 @@
 #include "ChessPiece.h"
 
 bool validBoardLocation(Coordinate position) {
-    return 0 < position.rowIndex && position.rowIndex < 8
-           && 0 < position.colIndex && position.colIndex < 8;
+    return 0 < position.row && position.row < 8
+           && 0 < position.col && position.col < 8;
 }
 
 void initializeChessBoard(BoardPosition chessBoard[8][8]) {
@@ -60,17 +60,17 @@ void initializeChessBoard(BoardPosition chessBoard[8][8]) {
 
             // set up the BLACK pieces
             if (i < 2) {
-                chessBoard[i][j] = {i,j, &blackPieces[8*i + j], positionColor, false};
+                chessBoard[i][j] = {i,j, &blackPieces[8*i + j], positionColor, REGULAR};
             }
 
             // set up the empty middle rows
             else if (i < 6) {
-                chessBoard[i][j] = {i,j, NULL, positionColor, false};
+                chessBoard[i][j] = {i,j, NULL, positionColor, REGULAR};
             }
 
             // set up the WHITE pieces
             else {
-                chessBoard[i][j] = {i,j, &whitePieces[8*(i-6) + j], positionColor, false};
+                chessBoard[i][j] = {i,j, &whitePieces[8*(i-6) + j], positionColor, REGULAR};
             }
         }
     }
