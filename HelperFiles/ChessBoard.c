@@ -12,47 +12,6 @@ bool validBoardLocation(Coordinate position) {
 }
 
 void initializeChessBoard(BoardPosition chessBoard[8][8]) {
-   // BLACK pieces
-    ChessPiece leftBlackRook = {ROOK, BLACK, false, {0, 0}};
-    ChessPiece leftBlackKnight = {KNIGHT, BLACK, false, {0, 1}};
-    ChessPiece leftBlackBishop = {BISHOP, BLACK, false, {0, 2}};
-    ChessPiece blackQueen = {QUEEN, BLACK, false, {0, 3}};
-    ChessPiece blackKing = {KING, BLACK, false, {0, 4}};
-    ChessPiece rightBlackBishop = {BISHOP, BLACK, false, {0, 5}};
-    ChessPiece rightBlackKnight = {KNIGHT, BLACK, false, {0, 6}};
-    ChessPiece rightBlackRook = {ROOK, BLACK, false, {0, 7}};
-    ChessPiece blackPawn1 = {PAWN, BLACK, false, {1, 0}};
-    ChessPiece blackPawn2 = {PAWN, BLACK, false, {1, 1}};
-    ChessPiece blackPawn3 = {PAWN, BLACK, false, {1, 2}};
-    ChessPiece blackPawn4 = {PAWN, BLACK, false, {1, 3}};
-    ChessPiece blackPawn5 = {PAWN, BLACK, false, {1, 4}};
-    ChessPiece blackPawn6 = {PAWN, BLACK, false, {1, 5}};
-    ChessPiece blackPawn7 = {PAWN, BLACK, false, {1, 6}};
-    ChessPiece blackPawn8 = {PAWN, BLACK, false, {1, 7}};
-    ChessPiece blackPieces[16] =
-            {leftBlackRook, leftBlackKnight, leftBlackBishop, blackQueen, blackKing, rightBlackBishop, rightBlackKnight, rightBlackRook,
-             blackPawn1, blackPawn2, blackPawn3, blackPawn4, blackPawn5, blackPawn6, blackPawn6, blackPawn7};
-
-    // WHITE pieces
-    ChessPiece whitePawn1 = {PAWN, WHITE, false, {6, 0}};
-    ChessPiece whitePawn2 = {PAWN, WHITE, false, {6, 1}};
-    ChessPiece whitePawn3 = {PAWN, WHITE, false, {6, 2}};
-    ChessPiece whitePawn4 = {PAWN, WHITE, false, {6, 3}};
-    ChessPiece whitePawn5 = {PAWN, WHITE, false, {6, 4}};
-    ChessPiece whitePawn6 = {PAWN, WHITE, false, {6, 5}};
-    ChessPiece whitePawn7 = {PAWN, WHITE, false, {6, 6}};
-    ChessPiece whitePawn8 = {PAWN, WHITE, false, {6, 7}};
-    ChessPiece leftWhiteRook = {ROOK, WHITE, false, {7, 0}};
-    ChessPiece leftWhiteKnight = {KNIGHT, WHITE, false, {7, 1}};
-    ChessPiece leftWhiteBishop = {BISHOP, WHITE, false, {7, 2}};
-    ChessPiece WhiteQueen = {QUEEN, WHITE, false, {7, 3}};
-    ChessPiece WhiteKing = {KING, WHITE, false, {7, 4}};
-    ChessPiece rightWhiteBishop = {BISHOP, WHITE, false, {7, 5}};
-    ChessPiece rightWhiteKnight = {KNIGHT, WHITE, false, {7, 6}};
-    ChessPiece rightWhiteRook = {ROOK, WHITE, false, {7, 7}};
-    ChessPiece whitePieces[16] =
-            {leftWhiteRook, leftWhiteKnight, leftWhiteBishop, WhiteQueen, WhiteKing, rightWhiteBishop, rightWhiteKnight, rightWhiteRook,
-             whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn6, whitePawn7};
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -111,7 +70,7 @@ void prettyPrintChessBoard(BoardPosition chessBoard[8][8]) {
                 }
             }
             else {
-                switch(pos.piece->type) {
+                switch (pos.piece->type) {
                     case PAWN:
                         printf("P");
                         break;

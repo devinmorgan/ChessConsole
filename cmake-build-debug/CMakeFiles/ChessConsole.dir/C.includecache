@@ -1,0 +1,112 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.c
+libintl.h
+-
+DisplayModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.h
+HelperFiles/GameStateModuleHelperLibrary.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.h
+GameStateModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.c
+windef.h
+-
+malloc.h
+-
+GameStateModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h
+DisplayModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.h
+SerialCommunicationModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.h
+HelperFiles/GameStateModuleHelperLibrary.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.h
+HelperFiles/ChessPiece.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
+HelperFiles/ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h
+stdbool.h
+-
+HelperFiles/ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h
+HelperFiles/GameStateModuleHelperLibrary.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.c
+stdio.h
+-
+ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h
+ChessPiece.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h
+stdbool.h
+-
+ChessPiece.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.c
+ChessPiece.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
+stdbool.h
+-
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.c
+stdbool.h
+-
+windef.h
+-
+malloc.h
+-
+ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h
+GameStateModuleHelperLibrary.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.h
+ChessPiece.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/GameStateModuleHelperLibrary.h
+stdbool.h
+-
+ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessBoard.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.c
+stdio.h
+-
+SerialCommunicationModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.h
+ChessGameComponents/ChessBoard.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameComponents/ChessBoard.h
+GameStateModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h
+
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/main.c
+stdio.h
+-
+stdbool.h
+-
+malloc.h
+-
+GameStateModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h
+DisplayModule.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.h
+
