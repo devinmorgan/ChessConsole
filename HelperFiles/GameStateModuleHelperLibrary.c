@@ -348,9 +348,7 @@ bool moveWouldPutSelfInCheck(Coordinate start, Coordinate end, GameState gameSta
 }
 
 bool pieceCanLegallyMoveToDestination(Coordinate start, Coordinate end, GameState gameState) {
-    return validBoardLocation(end)
-           && pieceIsCapableOfMovingToLocation(start, end, gameState)
-           && !moveWouldPutSelfInCheck(start, end, gameState);
+    return validBoardLocation(end);
 }
 
 void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameState *pGameState) {
