@@ -34,6 +34,4 @@ bool pieceCanLegallyMoveToDestination(Coordinate start, Coordinate end, GameStat
 
 void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameState *pGameState);
 
-Coordinate* getLegalMovesForPiece(Coordinate coordinate, GameState* pGameState, Coordinate legalMoves[]);
-
 #endif //CHESSCONSOLE_GAMESTATEMODULEHELPERLIBARY_H
