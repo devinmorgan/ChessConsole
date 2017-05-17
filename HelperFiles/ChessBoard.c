@@ -19,17 +19,29 @@ void initializeChessBoard(BoardPosition chessBoard[8][8]) {
 
             // set up the BLACK pieces
             if (i < 2) {
-                chessBoard[i][j] = {i,j, &blackPieces[8*i + j], positionColor, REGULAR};
+                chessBoard[i][j].rowIndex = i;
+                chessBoard[i][j].colIndex = j;
+                chessBoard[i][j].color = positionColor;
+                chessBoard[i][j].state = REGULAR;
+                chessBoard[i][j].piece = &blackPieces[8*i + j];
             }
 
             // set up the empty middle rows
             else if (i < 6) {
-                chessBoard[i][j] = {i,j, NULL, positionColor, REGULAR};
+                chessBoard[i][j].rowIndex = i;
+                chessBoard[i][j].colIndex = j;
+                chessBoard[i][j].color = positionColor;
+                chessBoard[i][j].piece = NULL;
+                chessBoard[i][j].state = REGULAR;
             }
 
             // set up the WHITE pieces
             else {
-                chessBoard[i][j] = {i,j, &whitePieces[8*(i-6) + j], positionColor, REGULAR};
+                chessBoard[i][j].rowIndex = i;
+                chessBoard[i][j].colIndex = j;
+                chessBoard[i][j].color = positionColor;
+                chessBoard[i][j].state = REGULAR;
+                chessBoard[i][j].piece = &whitePieces[8*(i-6) + j];
             }
         }
     }

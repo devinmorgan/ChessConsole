@@ -4,11 +4,13 @@
 
 #include <stdio.h>
 #include "SerialCommunicationModule.h"
+#include "HelperFiles/ChessPiece.h"
 
-Coordinate readPositionFromController(GameState gameState) {
+void readPositionFromController(Coordinate* pCoordinate, GameState gameState) {
     int row, col;
     scanf("%d%d", &row, &col);
-    return {row, col};
+    pCoordinate->row = row;
+    pCoordinate->col = col;
 }
 
 int scanForGamePlayMode() {

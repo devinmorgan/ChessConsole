@@ -6,7 +6,7 @@
 #include <windef.h>
 #include <malloc.h>
 #include "ChessBoard.h"
-#include "GameStateModuleHelperLibrary.h""
+#include "GameStateModuleHelperLibrary.h"
 #include "ChessPiece.h"
 
 
@@ -53,10 +53,17 @@ bool pawnIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState
     Coordinate forwardRight = {start.row-1, start.col+1};
 
     if (gameState.teamColor == BLACK) {
-        forwardLeft = {start.row+1, start.col+1};
-        forward = {start.row+1, start.col};
-        forwardForward = {start.row+2, start.col};
-        forwardRight = {start.row+1, start.col-1};
+        forwardLeft.row = start.row+1;
+        forwardLeft.col = start.col+1;
+
+        forward.row = start.row+1;
+        forward.col = start.col;
+
+        forwardForward.row = start.row+2;
+        forwardForward.col = start.col;
+
+        forwardRight.row = start.row+1;
+        forwardRight.col = start.col-1;
     }
 
     if (samePosition(forwardLeft, end) || samePosition(forwardRight, end))
@@ -354,11 +361,11 @@ bool pieceCanLegallyMoveToDestination(Coordinate start, Coordinate end, GameStat
 void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameState *pGameState) {
     // move the piece from the start position to the end position
     ChessPiece* startPiece = (pGameState->grid[start.row][start.col]).piece;
-    ChessPiece* endPiece = (pGameState->.grid[end.row][end.col]).piece;
+    ChessPiece* endPiece = (pGameState->grid[end.row][end.col]).piece;
 
     // temporarily move the start piece to the end position
-    (pGameState->.grid[start.row][start.col]).piece = NULL;
-    (pGameState->.grid[end.row][end.col]).piece = startPiece;
+    (pGameState->grid[start.row][start.col]).piece = NULL;
+    (pGameState->grid[end.row][end.col]).piece = startPiece;
 
     // indicate that the piece has now moved at least once
     startPiece->hasMoved = true;

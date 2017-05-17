@@ -53,25 +53,27 @@ GameState* initializeUntimedChessGame() {
 
 Coordinate promptPlayerToSelectPiece(GameState* pGameState) {
     displaySelectPieceMessage(*pGameState);
-    Coordinate response = readPositionFromController(*pGameState);
+    Coordinate* response;
+    readPositionFromController(response, *pGameState);
 
     // always make sure to check if the user wants to quit the game
-    if (response.row == 0 && response.col == 0)
+    if (response->row == 0 && response->col == 0)
         pGameState->gameOver = true;
 
-    return response;
+    return *response;
 
 }
 
 Coordinate promptPlayerToSelectDestination(GameState* pGameState) {
     displaySelectDestinationMessage(*pGameState);
-    Coordinate response = readPositionFromController(*pGameState);
+    Coordinate* response;
+    readPositionFromController(response, *pGameState);
 
     // always make sure to check if the user wants to quit the game
-    if (response.row == 0 && response.col == 0)
+    if (response->row == 0 && response->col == 0)
         pGameState->gameOver = true;
 
-    return response;
+    return *response;
 }
 
 void makeNextMove(GameState* pGameState) {

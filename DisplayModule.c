@@ -2,7 +2,7 @@
 // Created by Devin Morgan on 5/10/2017.
 //
 
-#include <libintl.h>
+#include <stdio.h>
 #include "DisplayModule.h"
 #include "HelperFiles/GameStateModuleHelperLibrary.h"
 

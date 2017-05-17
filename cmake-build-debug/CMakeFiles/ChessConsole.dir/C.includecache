@@ -7,7 +7,7 @@
 #IncludeRegexTransform: 
 
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.c
-libintl.h
+stdio.h
 -
 DisplayModule.h
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/DisplayModule.h
@@ -91,10 +91,10 @@ stdio.h
 -
 SerialCommunicationModule.h
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.h
+HelperFiles/ChessPiece.h
+C:/Users/Devin Morgan/CLionProjects/ChessConsole/HelperFiles/ChessPiece.h
 
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/SerialCommunicationModule.h
-ChessGameComponents/ChessBoard.h
-C:/Users/Devin Morgan/CLionProjects/ChessConsole/ChessGameComponents/ChessBoard.h
 GameStateModule.h
 C:/Users/Devin Morgan/CLionProjects/ChessConsole/GameStateModule.h
 
