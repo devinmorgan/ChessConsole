@@ -74,14 +74,6 @@ Coordinate promptPlayerToSelectDestination(GameState* pGameState) {
     return response;
 }
 
-void restoreStatesOfAllBoard(GameState* pGameState) {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            (pGameState->grid[i][j]).state = REGULAR;
-        }
-    }
-}
-
 void makeNextMove(GameState* pGameState) {
        // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the

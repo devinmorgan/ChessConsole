@@ -7,7 +7,7 @@
 #include "HelperFiles/GameStateModuleHelperLibrary.h"
 
 void drawBoard(GameState gameState) {
-    // TODO: implement me!
+    prettyPrintChessBoard(gameState.grid);
 }
 
 void displayGamePlayModeMessage() {

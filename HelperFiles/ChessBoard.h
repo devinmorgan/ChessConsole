@@ -33,7 +33,7 @@ typedef struct {
 
 void initializeChessBoard(BoardPosition pChessBoard[8][8]);
 
-void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]);
+void prettyPrintChessBoard(BoardPosition pChessBoard[8][8]);
 
 ChessPiece* getClosestPieceLeft(int row, int col, BoardPosition grid[8][8]);
 

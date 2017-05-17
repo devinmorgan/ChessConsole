@@ -76,8 +76,66 @@ void initializeChessBoard(BoardPosition chessBoard[8][8]) {
     }
 }
 
-void prettyPrintChessBoard(ChessPiece pChessBoard[8][8]) {
-   // TODO: implement me!
+void prettyPrintChessBoard(BoardPosition chessBoard[8][8]) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            BoardPosition pos = chessBoard[i][j];
+            if (pos.piece == NULL) {
+                if (pos.color == WHITE) {
+                    printf("__");
+                }
+                else {
+                    printf(". .");
+                }
+            }
+            else if (pos.piece->color == BLACK) {
+                switch(pos.piece->type) {
+                    case PAWN:
+                        printf("p");
+                        break;
+                    case KNIGHT:
+                        printf("n");
+                        break;
+                    case BISHOP:
+                        printf("b");
+                        break;
+                    case ROOK:
+                        printf("r");
+                        break;
+                    case QUEEN:
+                        printf("q");
+                        break;
+                    case KING:
+                        printf("k");
+                        break;
+                }
+            }
+            else {
+                switch(pos.piece->type) {
+                    case PAWN:
+                        printf("P");
+                        break;
+                    case KNIGHT:
+                        printf("N");
+                        break;
+                    case BISHOP:
+                        printf("B");
+                        break;
+                    case ROOK:
+                        printf("R");
+                        break;
+                    case QUEEN:
+                        printf("Q");
+                        break;
+                    case KING:
+                        printf("K");
+                        break;
+                }
+            }
+            printf("\t");
+        }
+        printf("\n");
+    }
 }
 
 ChessPiece* getClosestPieceLeft(int row, int col, BoardPosition grid[8][8]) {
