@@ -399,8 +399,7 @@ Coordinate* getLegalMovesForPawn(Coordinate c, GameState* pGameState, Coordinate
     // filter based on whether the pawn is
     // even capable of moving to that location
     for (int i = 0; i < max_pawn_moves; i++) {
-        if (moves[i] != NULL)
-            moves[i] = pawnIsCapableOfMovingToLocation(c, *moves[i], *pGameState) ? moves[i] : NULL;
+        moves[i] = pawnIsCapableOfMovingToLocation(c, *moves[i], *pGameState) ? moves[i] : NULL;
     }
 
     // filter based on whether the move would
@@ -423,8 +422,40 @@ Coordinate* getLegalMovesForPawn(Coordinate c, GameState* pGameState, Coordinate
     return legalMoves;
 }
 
-Coordinate* getLegalMovesForKnight(Coordinate coordinate, GameState* pGameState) {
-    // TODO: implement me!
+Coordinate* getLegalMovesForKnight(Coordinate c, GameState* pGameState, Coordinate legalMoves[]) {
+    // create a list of possible moves for the knight
+    int max_knight_moves = 8;
+    DeltaCoordinate possibleMoves[max_knight_moves] = {{-2,-1}, {-1,-2}, {1,-2}, {2,-1}, {2,1}, {1,2}, {-1,2}, {-2,1}};
+    Coordinate* moves[max_knight_moves];
+    for (int i = 0; i < max_knight_moves; i++) {
+        moves[i]->row = possibleMoves[i].deltaRows + c.row;
+        moves[i]->col = possibleMoves[i].deltaCols + c.col;
+    }
+
+    // filter based on whether the pawn is
+    // even capable of moving to that location
+    for (int i = 0; i < max_knight_moves; i++) {
+        moves[i] = knightIsCapableOfMovingToLocation(c, *moves[i], *pGameState) ? moves[i] : NULL;
+    }
+
+    // filter based on whether the move would
+    // put self in check
+    for (int i = 0; i < max_knight_moves; i++) {
+        if (moves[i] != NULL)
+            moves[i] = moveWouldPutSelfInCheck(c, *moves[i], *pGameState) ? NULL : moves[i];
+    }
+
+    // copy the valid moves to legalMoves[]
+    int legalMovesIndex = 0;
+    for (int i = 0; i < max_knight_moves; i++) {
+        if (moves[i] != NULL) {
+            legalMoves[legalMovesIndex].row = moves[i]->row;
+            legalMoves[legalMovesIndex].col = moves[i]->col;
+            legalMovesIndex++;
+        }
+    }
+
+    return legalMoves;
 }
 
 
