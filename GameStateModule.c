@@ -25,7 +25,7 @@ PlayMode promptUserForGamePlayMode() {
 }
 
 void playTimedChess() {
-    // TODO: implement me!
+    // Do nothing...
 }
 
 void playUntimedChess() {
@@ -82,21 +82,8 @@ void restoreStatesOfAllBoard(GameState* pGameState) {
     }
 }
 
-bool currentPlayerHasNoLegalMoves(GameState gameState) {
-    // TODO: implement me!
-}
-
-bool playerIsInCheckMate(GameState gameState) {
-    return currentPlayerIsInCheck(gameState) && currentPlayerHasNoLegalMoves(gameState);
-}
-
 void makeNextMove(GameState* pGameState) {
-    if (playerIsInCheckMate(*pGameState)) {
-        pGameState->gameOver = true;
-        return;
-    }
-
-    // read the appropriate player's controller for which
+       // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
     // player chooses a legal piece to move
     Coordinate piecePosition;
@@ -126,7 +113,6 @@ void makeNextMove(GameState* pGameState) {
         return;
 
     permanentlyUpdateGameStateWithMove(piecePosition, pieceDestination, pGameState);
-    restoreStatesOfAllBoard(pGameState;
     drawBoard(*pGameState);
 }
 

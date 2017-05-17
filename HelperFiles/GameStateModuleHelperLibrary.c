@@ -43,7 +43,6 @@ bool isPieceOfType(Coordinate position, PieceType type, GameState gameState) {
 // For knights, returns false if the destination location
 // occupied by an ally and returns true if thy are not
 
-// TODO: implement en passant for pawns
 bool pawnIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE this is NOT symmetric for black and WHITE
 
@@ -198,7 +197,6 @@ bool queenIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameStat
            || rookIsCapableOfMovingToLocation(start, end, gameState);
 }
 
-// TODO: implement castling for king
 bool kingIsCapableOfMovingToLocation(Coordinate start, Coordinate end, GameState gameState) {
     // NOTE: this is symmetric for both BLACK and WHITE
     DeltaCoordinate possibleMoves[8] = {{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}};
