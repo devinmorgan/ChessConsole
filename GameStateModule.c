@@ -51,41 +51,38 @@ GameState* initializeUntimedChessGame() {
     pGameState->gameOver = false;
 }
 
-Coordinate promptPlayerToSelectPiece(GameState* pGameState) {
-    displaySelectPieceMessage(*pGameState);
-    Coordinate* response;
-    readPositionFromController(response, *pGameState);
-
-    // always make sure to check if the user wants to quit the game
-    if (response->row == 0 && response->col == 0)
-        pGameState->gameOver = true;
-
-    return *response;
-
+void promptPlayerToSelectPiece(Coordinate* piece, GameState* pGameState) {
+    // initialize coordinate with dummy values
+    piece->row = -1;
+    piece->col = -1;
+    while (! validBoardLocation(*piece)) {
+        displaySelectPieceMessage(*pGameState);
+        readPositionFromController(piece, *pGameState);
+    }
 }
 
-Coordinate promptPlayerToSelectDestination(GameState* pGameState) {
-    displaySelectDestinationMessage(*pGameState);
-    Coordinate* response;
-    readPositionFromController(response, *pGameState);
-
-    // always make sure to check if the user wants to quit the game
-    if (response->row == 0 && response->col == 0)
-        pGameState->gameOver = true;
-
-    return *response;
+void promptPlayerToSelectDestination(Coordinate* destination, GameState* pGameState) {
+    // initialize coordinate with dummy values
+    destination->row = -1;
+    destination->col = -1;
+    while (! validBoardLocation(*destination)) {
+        displaySelectDestinationMessage(*pGameState);
+        readPositionFromController(destination, *pGameState);
+    }
 }
 
 void makeNextMove(GameState* pGameState) {
-       // read the appropriate player's controller for which
+    drawBoard(*pGameState);
+
+    // read the appropriate player's controller for which
     // piece to move. Keep asking for a position until the
     // player chooses a legal piece to move
-    Coordinate piecePosition;
+    Coordinate* piecePosition = (Coordinate*) malloc(sizeof(Coordinate));
     bool isValidPiece = false;
     while (! isValidPiece) {
-        piecePosition = promptPlayerToSelectPiece(pGameState);
-        isValidPiece = validBoardLocation(piecePosition)
-                       && isAnAllyPiece(piecePosition, *pGameState);
+        promptPlayerToSelectPiece(piecePosition, pGameState);
+        isValidPiece = validBoardLocation(*piecePosition)
+                       && isAnAllyPiece(*piecePosition, *pGameState);
     }
 
     // check if the user wanted to quit the game
@@ -95,18 +92,19 @@ void makeNextMove(GameState* pGameState) {
     // read the appropriate player's controller for where
     // to move the selected piece. Keep asking for a
     // position until the player chooses a legal position
-    Coordinate pieceDestination;
+    Coordinate* pieceDestination = (Coordinate*) malloc(sizeof(Coordinate));
     bool isValidDestination = false;
     while (! isValidDestination) {
-        pieceDestination = promptPlayerToSelectDestination(pGameState);
-        isValidDestination = pieceCanLegallyMoveToDestination(piecePosition, pieceDestination, *pGameState);
+        promptPlayerToSelectDestination(pieceDestination, pGameState);
+        isValidDestination = pieceCanLegallyMoveToDestination(*piecePosition, *pieceDestination, *pGameState);
     }
 
     // check if the user wanted to quit the game
     if (pGameState->gameOver)
         return;
 
-    permanentlyUpdateGameStateWithMove(piecePosition, pieceDestination, pGameState);
-    drawBoard(*pGameState);
+    permanentlyUpdateGameStateWithMove(*piecePosition, *pieceDestination, pGameState);
+    free(piecePosition);
+    free(pieceDestination);
 }
 

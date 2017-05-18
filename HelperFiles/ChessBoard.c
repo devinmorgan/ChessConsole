@@ -7,8 +7,8 @@
 #include "ChessPiece.h"
 
 bool validBoardLocation(Coordinate position) {
-    return 0 < position.row && position.row < 8
-           && 0 < position.col && position.col < 8;
+    return 0 <= position.row && position.row < 8
+           && 0 <= position.col && position.col < 8;
 }
 
 void initializeChessBoard(BoardPosition chessBoard[8][8]) {
@@ -48,7 +48,19 @@ void initializeChessBoard(BoardPosition chessBoard[8][8]) {
 }
 
 void prettyPrintChessBoard(BoardPosition chessBoard[8][8]) {
+
+    // print the column numbers
+    printf("\t");
     for (int i = 0; i < 8; i++) {
+        printf("%d\t", i);
+    }
+    printf("\n");
+
+    for (int i = 0; i < 8; i++) {
+
+        // print the row numbers
+        printf("%d\t", i);
+
         for (int j = 0; j < 8; j++) {
             BoardPosition pos = chessBoard[i][j];
             if (pos.piece == NULL) {

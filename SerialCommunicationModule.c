@@ -6,7 +6,7 @@
 #include "SerialCommunicationModule.h"
 #include "HelperFiles/ChessPiece.h"
 
-void readPositionFromController(Coordinate* pCoordinate, GameState gameState) {
+ void readPositionFromController(Coordinate* pCoordinate, GameState gameState) {
     int row, col;
     scanf("%d%d", &row, &col);
     pCoordinate->row = row;

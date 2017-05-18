@@ -363,7 +363,7 @@ void permanentlyUpdateGameStateWithMove(Coordinate start, Coordinate end, GameSt
     ChessPiece* startPiece = (pGameState->grid[start.row][start.col]).piece;
     ChessPiece* endPiece = (pGameState->grid[end.row][end.col]).piece;
 
-    // temporarily move the start piece to the end position
+    // move the start piece to the end position
     (pGameState->grid[start.row][start.col]).piece = NULL;
     (pGameState->grid[end.row][end.col]).piece = startPiece;
 
